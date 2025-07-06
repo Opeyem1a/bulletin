@@ -1,33 +1,33 @@
 {
-  "name": "bulletin",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "engines": {
-    "node": ">=22"
-  },
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "tsc && eslint && next lint && yarn prettier . --check",
-    "fix": "yarn prettier . --write",
-    "build:html": "tsx --tsconfig tsconfig.build.json src/scripts/build-email-html.tsx"
-  },
-  "dependencies": {
-    "next": "15.3.5",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "tsx": "^4.20.3"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.3.5",
-    "prettier": "^3.6.2",
-    "typescript": "^5"
-  }
+    "name": "bulletin",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "engines": {
+        "node": ">=22"
+    },
+    "scripts": {
+        "dev": "next dev --turbopack",
+        "build": "next build",
+        "start": "next start",
+        "lint": "tsc && eslint && next lint && yarn prettier . --check",
+        "fix": "yarn prettier . --write",
+        "build:html": "tsx --tsconfig tsconfig.build.json src/scripts/build-email-html.tsx"
+    },
+    "dependencies": {
+        "next": "15.3.5",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "tsx": "^4.20.3"
+    },
+    "devDependencies": {
+        "@eslint/eslintrc": "^3",
+        "@types/node": "^20",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "eslint": "^9",
+        "eslint-config-next": "15.3.5",
+        "prettier": "^3.6.2",
+        "typescript": "^5"
+    }
 }

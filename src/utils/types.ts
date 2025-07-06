@@ -1,3 +1,3 @@
-type NonEmptyArray<T> = [T, ...T[]]
+type NonEmptyArray<T> = [T, ...T[]];
 
-export type { NonEmptyArray }
+export type { NonEmptyArray };
