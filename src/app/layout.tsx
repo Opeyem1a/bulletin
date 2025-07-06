@@ -1,18 +1,14 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Email template",
-  description: "Email template page for live previewing designs",
+    title: 'Email template',
+    description: 'Email template page for live previewing designs',
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <>
-      {children}
-    </>
-  );
+    return <>{children}</>;
 }

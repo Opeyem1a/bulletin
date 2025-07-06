@@ -1,17 +1,15 @@
-import {ReactNode} from "react";
+import { ReactNode } from 'react';
 
 interface SectionProps {
-    children: ReactNode
+    children: ReactNode;
 }
 
 const Section = ({ children }: SectionProps) => {
     return (
         <tr>
-            <td>
-                {children}
-            </td>
+            <td>{children}</td>
         </tr>
-    )
-}
+    );
+};
 
-export { Section }
+export { Section };

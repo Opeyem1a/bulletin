@@ -1,11 +1,13 @@
 interface SpacerProps {
-    height: `${number}px`
+    height: `${number}px`;
 }
 
 const Spacer = ({ height }: SpacerProps) => {
     return (
-        <tr><td style={{height}}></td></tr>
-    )
-}
+        <tr>
+            <td style={{ height }}></td>
+        </tr>
+    );
+};
 
-export { Spacer }
+export { Spacer };
