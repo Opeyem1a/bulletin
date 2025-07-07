@@ -2,6 +2,7 @@ import { Spacer } from '@/app/(components)/spacer';
 import { Header } from '@/app/(components)/header';
 import { Footer } from '@/app/(components)/footer';
 import { getDocumentTitle } from '@/app/(config)/helpers';
+import { EmailContent004 } from '@/app/(email-content)/004';
 
 interface EmailComponentProps {
     editionNumber: number;
@@ -42,6 +43,8 @@ const Email = ({ editionNumber }: EmailComponentProps) => {
                                     <tbody>
                                         <Header editionNumber={editionNumber} />
                                         <Spacer height="28px" />
+                                        <EmailContent004 />
+                                        <Spacer height="24px" />
                                         <Footer />
                                     </tbody>
                                 </table>
