@@ -1,4 +1,11 @@
-const Header = () => {
+import { NAME } from '@/app/(config)/constants';
+import { getEditionName } from '@/app/(config)/helpers';
+
+interface HeaderProps {
+    editionNumber: number;
+}
+
+const Header = ({ editionNumber }: HeaderProps) => {
     return (
         <tr>
             <td style={{ textAlign: 'left' }}>
@@ -10,7 +17,7 @@ const Header = () => {
                         margin: 0,
                     }}
                 >
-                    something lovely
+                    {NAME}
                 </p>
                 <p
                     style={{
@@ -19,7 +26,7 @@ const Header = () => {
                         marginTop: '4px',
                     }}
                 >
-                    edition #004
+                    {getEditionName(editionNumber)}
                 </p>
             </td>
         </tr>
