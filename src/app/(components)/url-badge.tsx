@@ -9,7 +9,7 @@ interface UrlBadgeProps {
 type UrlBadgeVariant = keyof typeof URL_BADGE_VARIANTS;
 
 const URL_BADGE_VARIANTS = {
-    primary: {
+    article: {
         anchorStyles: { color: '#F4F1ED', textDecoration: 'none' },
         spanStyles: {
             padding: '4px 8px',
@@ -17,11 +17,11 @@ const URL_BADGE_VARIANTS = {
             borderRadius: '8px',
         },
     },
-    secondary: {
+    music: {
         anchorStyles: { color: '#F4F1ED', textDecoration: 'none' },
         spanStyles: {
             padding: '4px 8px',
-            backgroundColor: '#185B6A',
+            backgroundColor: '#2D81FF',
             borderRadius: '8px',
         },
     },

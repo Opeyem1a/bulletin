@@ -20,7 +20,7 @@ import { getOutputFilename } from '@/app/(config)/helpers';
     const dirPath = `${process.cwd()}/archive`;
     const filepath = resolve(dirPath, filename);
     mkdirSync(dirPath, { recursive: true });
-    writeFileSync(filepath, content, { encoding: 'utf-8' });
+    writeFileSync(filepath, `<!DOCTYPE html>${content}`, { encoding: 'utf-8' });
 
     console.log(`File saved to ${filepath}`);
 })();

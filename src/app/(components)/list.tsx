@@ -35,8 +35,8 @@ interface ListItemProps {
     isFirst: boolean;
 }
 
-const ListItem = ({ children, isFirst }: ListItemProps) => {
-    return <li style={isFirst ? { marginTop: '8px' } : {}}>{children}</li>;
+const ListItem = ({ children }: ListItemProps) => {
+    return <li style={{ marginTop: '12px' }}>{children}</li>;
 };
 
-export { List, ListItem };
+export { List };
