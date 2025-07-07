@@ -1,12 +1,17 @@
 import { Spacer } from '@/app/(components)/spacer';
 import { Header } from '@/app/(components)/header';
 import { Footer } from '@/app/(components)/footer';
+import { getDocumentTitle } from '@/app/(config)/helpers';
 
-const Email = () => {
+interface EmailComponentProps {
+    editionNumber: number;
+}
+
+const Email = ({ editionNumber }: EmailComponentProps) => {
     return (
         <html>
             <head>
-                <title>something lovely – edition #004</title>
+                <title>{getDocumentTitle({ editionNumber })}</title>
                 <meta charSet="UTF-8" />
             </head>
             <body style={{ margin: 0, padding: 0, backgroundColor: '#ffffff' }}>
@@ -35,7 +40,7 @@ const Email = () => {
                                     }}
                                 >
                                     <tbody>
-                                        <Header />
+                                        <Header editionNumber={editionNumber} />
                                         <Spacer height="28px" />
                                         <Footer />
                                     </tbody>
@@ -49,4 +54,9 @@ const Email = () => {
     );
 };
 
-export default Email;
+const PreviewEmailPage = () => {
+    return <Email editionNumber={1} />;
+};
+
+export default PreviewEmailPage;
+export { Email }
