@@ -59,4 +59,4 @@ const PreviewEmailPage = () => {
 };
 
 export default PreviewEmailPage;
-export { Email }
+export { Email };

@@ -13,7 +13,7 @@ function getDocumentTitle({ editionNumber }: { editionNumber: number }) {
 }
 
 function getOutputFilename({ editionNumber }: { editionNumber: number }) {
-    return `email-${formatEditionNumber(editionNumber)}_${new Date().getTime()}.html`
+    return `email-${formatEditionNumber(editionNumber)}_${new Date().getTime()}.html`;
 }
 
 export { getEditionName, getDocumentTitle, getOutputFilename };
