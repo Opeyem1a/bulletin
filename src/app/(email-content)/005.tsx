@@ -1,4 +1,4 @@
-import { Text } from '@/app/(components)/text';
+import { Aside, Text } from '@/app/(components)/text';
 import { Section } from '@/app/(components)/section';
 import { Spacer } from '@/app/(components)/spacer';
 import { UrlBadge } from '@/app/(components)/url-badge';
@@ -25,11 +25,11 @@ const EmailContent005 = () => {
                 </Text>
                 <Text variant="aside">
                     <i>
-                        P.S. Much of this issue is me passing on lovely
-                        recommendations and thoughts from my lovely friends.
-                        I&apos;ve referenced them by first initial in case they
-                        don&apos;t want to be put on blast, but let it be known
-                        that I appreciate them very much.
+                        P.S. Much of this issue is me passing on recommendations
+                        and thoughts from my lovely friends. I&apos;ve
+                        referenced them by first initial in case they don&apos;t
+                        want to be put on blast, but let it be known that I
+                        appreciate them each very much.
                     </i>
                 </Text>
             </Section>
@@ -46,9 +46,10 @@ const EmailContent005 = () => {
                     (or something like that). It made me think about how I used
                     to perceive ad breaks. Running to the bathroom to make it
                     back in time, sneaking into the kitchen to grab a snack,
-                    unpacking something we just saw with my friends in the
+                    unpacking something from the show with my friends in the
                     living room. As I reminisced, I realized how much I had
-                    missed this.
+                    missed this, and how weird it is that I might be apart of
+                    the last generation to experience it.
                 </Text>
                 <Text variant="base">
                     It also got me thinking about personal agency. With ad
@@ -64,7 +65,7 @@ const EmailContent005 = () => {
                     had more freedom.
                 </Text>
                 <Text variant="aside">
-                    <i>(Thank you C for inspiring this)</i>
+                    <Aside>(Thank you C for inspiring this)</Aside>
                 </Text>
             </Section>
             <Spacer height="24px" />
@@ -79,7 +80,7 @@ const EmailContent005 = () => {
                     >
                         this reel
                     </a>
-                    .
+                    . I&apos;m going to try these this week!
                     <List
                         ordered={false}
                         items={[
@@ -120,8 +121,8 @@ const EmailContent005 = () => {
                     >
                         <Emoji icon="📎" /> The Decline of Usability: Revisited
                     </UrlBadge>{' '}
-                    is a good read about the concept of UX and how its roots
-                    hold up to modern software.
+                    is a good read about the concept of UX and how modern
+                    software holds up to its principles.
                 </Text>
                 <Text variant="base">
                     <UrlBadge
@@ -133,7 +134,7 @@ const EmailContent005 = () => {
                     reflects on the pursuit of creativity as one&apos;s job &
                     the complexities that fall around that. It was quite a
                     fascinating read for me.{' '}
-                    <i>(Thanks E for showing me this)</i>
+                    <Aside>(Thanks E for showing me this)</Aside>
                 </Text>
                 <Text variant="base">
                     <UrlBadge url="https://making.today/" variant="site">
@@ -161,9 +162,9 @@ const EmailContent005 = () => {
                         <Emoji icon="🌐" /> Dear data
                     </UrlBadge>{' '}
                     is an adorable project where 2 people became pen pals by
-                    manually recording artistic ways to record data about their
-                    lives and mailing them to each other. Definitely worth
-                    checking out. <i>(Thanks J for showing me this)</i>
+                    finding artistic ways to record data about their lives and
+                    mailing them to each other. Definitely worth checking out.{' '}
+                    <Aside>(Thanks J for showing me this)</Aside>
                 </Text>
             </Section>
         </>

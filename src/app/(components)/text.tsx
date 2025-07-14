@@ -30,4 +30,12 @@ const Text = ({ children, variant }: TextProps) => {
     return <p style={TEXT_VARIANTS[variant]}>{children}</p>;
 };
 
-export { Text };
+const Aside = ({ children }: Omit<TextProps, 'variant'>) => {
+    return (
+        <span style={TEXT_VARIANTS['aside']}>
+            <i>{children}</i>
+        </span>
+    );
+};
+
+export { Text, Aside };
