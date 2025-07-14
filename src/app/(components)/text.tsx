@@ -18,6 +18,12 @@ const TEXT_VARIANTS = {
         lineHeight: 1.65,
         color: '#374151',
     },
+    aside: {
+        fontSize: '12px',
+        lineHeight: 1.65,
+        color: '#374151',
+        opacity: 0.8,
+    },
 } satisfies Record<string, CSSProperties>;
 
 const Text = ({ children, variant }: TextProps) => {
