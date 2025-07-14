@@ -4,9 +4,14 @@ interface EmojiProps {
 
 type EmojiUnicodeEntity = `&#${number};`;
 
+/**
+ * @see https://www.compart.com/en/unicode/
+ */
 const EMOJIS = {
     '🌐': '&#127760;',
     '🎵': '&#127925;',
+    '📎': '&#128206;',
+    '👀': '&#128064;',
 } satisfies Record<string, EmojiUnicodeEntity>;
 
 /**
