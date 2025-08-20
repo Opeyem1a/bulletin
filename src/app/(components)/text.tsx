@@ -24,10 +24,22 @@ const TEXT_VARIANTS = {
         color: '#374151',
         opacity: 0.8,
     },
+    em: {
+        color: '#374151',
+        opacity: 0.8,
+    },
 } satisfies Record<string, CSSProperties>;
 
 const Text = ({ children, variant }: TextProps) => {
     return <p style={TEXT_VARIANTS[variant]}>{children}</p>;
+};
+
+const Em = ({ children }: Omit<TextProps, 'variant'>) => {
+    return (
+        <span style={TEXT_VARIANTS['em']}>
+            <i>{children}</i>
+        </span>
+    );
 };
 
 const Aside = ({ children }: Omit<TextProps, 'variant'>) => {
@@ -38,4 +50,4 @@ const Aside = ({ children }: Omit<TextProps, 'variant'>) => {
     );
 };
 
-export { Text, Aside };
+export { Text, Aside, Em };
