@@ -136,7 +136,7 @@ const EmailContent007 = () => {
                         url="https://www.instagram.com/p/DM2wB9COK3a/"
                         variant="site"
                     >
-                        <Emoji icon="🌐" /> Content diets
+                        <Emoji icon="📎" /> Content diets
                     </UrlBadge>{' '}
                     is a reel comparing dieting culture&apos;s response to
                     overabundance in food to content curation&apos;s response to
@@ -154,6 +154,17 @@ const EmailContent007 = () => {
                     is an intriguing essay on creating &quot;quests&quot; in
                     one&apos;s life to increase agency and fulfillment. Would
                     recommend.
+                </Text>
+                <Text variant="base">
+                    <UrlBadge
+                        url="https://youtu.be/aPhrTOg1RUk?si=GsT3iyDpWU0lc26D"
+                        variant="article"
+                    >
+                        <Emoji icon="📎" /> Envy
+                    </UrlBadge>{' '}
+                    is video essay about envy in the modern age and explores the
+                    philosophical history of it. Was quite intriguing in
+                    general. <Aside>Thanks E for putting me onto this</Aside>.
                 </Text>
             </Section>
             <Spacer height="16px" />
