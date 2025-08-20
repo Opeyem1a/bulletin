@@ -1,4 +1,4 @@
-import { Text } from '@/app/(components)/text';
+import { Aside, Em, Text } from '@/app/(components)/text';
 import { Section } from '@/app/(components)/section';
 import { Spacer } from '@/app/(components)/spacer';
 import { UrlBadge } from '@/app/(components)/url-badge';
@@ -11,16 +11,21 @@ const EmailContent007 = () => {
             <Section>
                 <Text variant="header">Hello again friends</Text>
                 <Text variant="base">
-                    Some tldr on my life before we indulge in the usual antics.
-                    I&apos;ve been in a bit of a funk honestly, and I suspect
-                    it&apos;s because I&apos;m trying to overclock the
-                    &quot;makes software product&quot; part of my brain for work
-                    and fun. I think my next set of things
-                    <Emoji icon="™️" /> might need to be not software. The new
+                    I&apos;ve been in a bit of a funk honestly{' '}
+                    <Em>
+                        (if that wasn&apos;t evident from my delay in writing
+                        this)
+                    </Em>
+                    , and I suspect it&apos;s because I&apos;m trying to
+                    overclock the &quot;makes software product&quot; part of my
+                    brain for work and fun. I think my next set of quests
+                    <Emoji icon="™️" /> might need to not be software. The new
                     side project I mentioned from before might end up being the
                     kind of thing that gets printed out, instead of deployed
-                    online. I&apos;ll keep you in the loop. Oh, and dating is
-                    intriguing, I&apos;ve learned lots about life & myself.
+                    online if you&apos;re picking up what I&apos;m putting down.
+                    Oh, and dating is intriguing, I&apos;ve learned lots about
+                    life & myself. I went on a super feet-kicky date too and
+                    that was cute.
                 </Text>
                 <Text variant="base">
                     Anyway, vulnerability and such aside, let&apos;s unshackle
@@ -30,20 +35,21 @@ const EmailContent007 = () => {
             </Section>
             <Spacer height="16px" />
             <Section>
-                <Text variant="header">It&apos;s so cool when people try</Text>
+                <Text variant="header">Imagine trying</Text>
                 <Text variant="base">
-                    I truly love it when people try. It&apos;s inspiring to see
-                    someone with the patience and tenacity required to steward a
-                    vision to completion. Someone once told me that inspiration
-                    is perishable, and watching those who tirelessly refuse to
-                    let their inspiration go unaddressed sparks a deep
-                    motivation in me too. I find that the average person in
-                    general just doesn&apos;t particularly try. They work, yes,
-                    but working and trying feel like different concepts to me.
-                    Working is what one does, measured in effort spent. Trying,
-                    to me, is directed effort, measured in velocity. Trying is
-                    choosing, tediously, to take an active role in one&apos;s
-                    life. I aspire to try.
+                    I truly love it when people try. Someone once told me that
+                    inspiration is perishable, and watching people just refuse
+                    to let their inspiration go unaddressed triggers a deep
+                    motivation in me. It&apos;s inspiring to see someone with
+                    the patience and tenacity required to take a vision to the
+                    finish line. I find that the average person in general just
+                    doesn&apos;t particularly try. They work, yes, but working
+                    and trying feel like different concepts to me. Working is
+                    what one does, measured in effort spent. Trying, to me, is
+                    directed effort, measured in velocity. Trying is tediously
+                    choosing to take an active role in one&apos;s life; to be in
+                    the driver&apos;s seat; to play life in first-player mode. I
+                    aspire to try.
                 </Text>
             </Section>
             <Spacer height="16px" />
@@ -54,35 +60,41 @@ const EmailContent007 = () => {
                     dented door combo. Big yikes, I know. It wasn&apos;t even a
                     cool story, I just took too tight of a corner around too
                     concrete of a pillar in too small of a parkade. My first
-                    response here was a clear <Emoji icon={`😬`} />. So we let
-                    that simmer for a few minutes at low heat, and it reminded
-                    me of a video I had watched some time ago.
+                    response here was a <Emoji icon={`😬`} />. So while I was
+                    letting that simmer for a few minutes at low heat, I
+                    remembered a video I watched some time ago.
                 </Text>
                 <Text variant="base">
                     The video&apos;s main premise was about being very
-                    intentional about the conclusions we draw from information.
+                    intentional about the conclusions one draw from information.
                     The video called this &quot;what we choose to make things
-                    mean&quot;. <i>Apophenia</i> is the tendency to perceive a
+                    mean&quot;. <Em>Apophenia</Em> is the tendency to perceive a
                     connection or meaningful pattern between unrelated or random
                     things, and it&apos;s a phenomenon I&apos;m personally quite
                     prone to. My impulse in that parkade after scratching my car
-                    was &quot;I&apos;m a bad driver&quot;, but why does that
-                    experience lead to this result? Literally speaking, I made a
-                    poor choice in a brief moment that resulted in no damage to
-                    anyone but myself. To assign any more meaning to it than
-                    that would demand justification.
+                    was &quot;I&apos;m a bad driver&quot;, and perhaps I am, but
+                    why should my experience lead to this result? Literally
+                    speaking, I made a poor choice in a brief moment that
+                    resulted in no damage to anyone but myself. To assign any
+                    more meaning to it than that would demand
+                    justification.{' '}
                 </Text>
+                <Aside>
+                    This message is sponsored by Opey&apos; Auto Body Repairs.
+                    Call for a free quote today.
+                </Aside>
                 <Text variant="base">
                     This extends to more than just car scratches. I&apos;ve
                     jumped from &quot;I like them&quot; to &quot;I should be
                     with them&quot;. From &quot;this specific person thinks I
                     did this poorly&quot; to &quot;I did that poorly&quot;. From
                     &quot;this task is hard&quot; to &quot;I am bad at this
-                    task&quot;. There is a pervasive peace that comes from
-                    direct observation. To note the difference between what I{' '}
-                    <i>made</i> something mean and what it truly represented. Or
-                    maybe I&apos;m making my experience of watching a video into
-                    a philosophical treatise. Curious what you think.
+                    task&quot;. I&apos;ve learned that there is a peace that
+                    comes from direct observation. To note the difference
+                    between what I <Em>made</Em> something mean and what it
+                    truly represented. Or maybe I&apos;m just currently making
+                    my experience of watching a video into a philosophical
+                    treatise. Curious what you think.
                 </Text>
             </Section>
             <Spacer height="16px" />

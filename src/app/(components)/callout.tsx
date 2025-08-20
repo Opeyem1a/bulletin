@@ -16,10 +16,11 @@ const CALLOUT_VARIANTS = {
 
 const Callout = ({ children, variant }: CalloutProps) => {
     return (
-        <p
+        <div
             style={{
                 borderRadius: '8px',
                 padding: '16px 24px',
+                margin: '16px 0',
                 ...CALLOUT_VARIANTS[variant],
             }}
         >
@@ -27,11 +28,12 @@ const Callout = ({ children, variant }: CalloutProps) => {
                 style={{
                     maxWidth: '32ch',
                     margin: '0',
+                    fontSize: '16px',
                 }}
             >
                 {children}
             </p>
-        </p>
+        </div>
     );
 };
 
