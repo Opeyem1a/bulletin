@@ -164,7 +164,7 @@ const EmailContent007 = () => {
                     </UrlBadge>{' '}
                     is video essay about envy in the modern age and explores the
                     philosophical history of it. Was quite intriguing in
-                    general. <Aside>Thanks E for putting me onto this</Aside>.
+                    general. <Aside>(Thanks E for putting me onto this)</Aside>.
                 </Text>
             </Section>
             <Spacer height="16px" />
