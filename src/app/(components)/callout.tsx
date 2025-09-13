@@ -29,6 +29,7 @@ const Callout = ({ children, variant }: CalloutProps) => {
                     maxWidth: '32ch',
                     margin: '0',
                     fontSize: '16px',
+                    lineHeight: 1.65,
                 }}
             >
                 {children}
