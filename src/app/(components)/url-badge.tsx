@@ -25,7 +25,18 @@ const URL_BADGE_VARIANTS = {
             borderRadius: '8px',
         },
     },
+    /**
+     * @deprecated - Use "media" instead
+     */
     music: {
+        anchorStyles: { color: '#F4F1ED', textDecoration: 'none' },
+        spanStyles: {
+            padding: '4px 8px',
+            backgroundColor: '#2D81FF',
+            borderRadius: '8px',
+        },
+    },
+    media: {
         anchorStyles: { color: '#F4F1ED', textDecoration: 'none' },
         spanStyles: {
             padding: '4px 8px',
