@@ -68,30 +68,38 @@ async function renderEmail(edition: Edition, coverSrc: string) {
         </table>
     );
 
+    // The two `[if mso]` blocks target classic Outlook on Windows, which renders
+    // with Word. The first hides the Manrope stylesheet from it (to every other
+    // client that line is a plain <link>). The second forces Arial, because Outlook
+    // falls back to Times New Roman when the first font in a stack isn't installed.
+    // The last pair wraps the email in a fixed 600px table, since Outlook ignores
+    // max-width.
     const html = `<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="x-apple-disable-message-reformatting">
-<meta name="format-detection" content="telephone=no,address=no,email=no,date=no">
-<meta name="color-scheme" content="light dark">
-<meta name="supported-color-schemes" content="light dark">
-<title>${getDocumentTitle({ editionNumber: edition.number })}</title>
-<!--[if !mso]><!--><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet"><!--<![endif]-->
-<!--[if mso]><style>td, p, h2, a, span { font-family: Arial, sans-serif !important; }</style><![endif]-->
-<style>${STYLES}</style>
-</head>
-<body class="${backgroundColorClass('page')}" style="margin:0;padding:0;background-color:${COLORS.page};">
-<div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:${COLORS.page};">${escapeHtml(edition.vibe)}${PREHEADER_PADDING}</div>
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="${backgroundColorClass('page')}" style="background-color:${COLORS.page};font-family:${FONT_STACK.replace(/'/g, '&#39;')};">
-<tr><td align="center" class="outer" style="padding:24px 12px;">
-<!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td><![endif]-->
-${body}
-<!--[if mso]></td></tr></table><![endif]-->
-</td></tr>
-</table>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="x-apple-disable-message-reformatting">
+        <meta name="format-detection" content="telephone=no,address=no,email=no,date=no">
+        <meta name="color-scheme" content="light dark">
+        <meta name="supported-color-schemes" content="light dark">
+        <title>${getDocumentTitle({ editionNumber: edition.number })}</title>
+        <!--[if !mso]><!--><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet"><!--<![endif]-->
+        <!--[if mso]><style>td, p, h2, a, span { font-family: Arial, sans-serif !important; }</style><![endif]-->
+        <style>${STYLES}</style>
+    </head>
+    <body class="${backgroundColorClass('page')}" style="margin:0;padding:0;background-color:${COLORS.page};">
+        <div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:${COLORS.page};">${escapeHtml(edition.vibe)}${PREHEADER_PADDING}</div>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="${backgroundColorClass('page')}" style="background-color:${COLORS.page};font-family:${FONT_STACK.replace(/'/g, '&#39;')};">
+            <tr>
+                <td align="center" class="outer" style="padding:24px 12px;">
+                    <!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td><![endif]-->
+                    ${body}
+                    <!--[if mso]></td></tr></table><![endif]-->
+                </td>
+            </tr>
+        </table>
+    </body>
 </html>`;
 
     // Apps Script has mangled pasted non-ASCII characters before (see the legacy
