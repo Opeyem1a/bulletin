@@ -15,8 +15,9 @@ rendered to email HTML, then sent from Gmail with Apps Script.
     - `question`: the edition's one question, with its id, text and tags as they
       appear on WDYT. The card links to `wdyt.site/ask/q/<id>`.
     - `content`: sections built from the components below.
-3. Preview with `yarn dev` and open http://localhost:3000 (or `/?edition=11`).
-   It re-renders on save, cover included.
+3. Preview with `yarn dev` and open http://localhost:3000/preview (or
+   `/preview?edition=11`). It re-renders on save, cover included. The preview
+   only runs locally.
 
 ### Components
 
@@ -39,6 +40,27 @@ rendered to email HTML, then sent from Gmail with Apps Script.
 
 The HTML is plain ASCII (other characters are written as entities), so it's safe
 to paste into Apps Script.
+
+Committing the archived HTML also makes the edition the sample on the signup
+page, from the next deploy.
+
+## Signup page
+
+The site's home page (`src/app/page.tsx`, with its pieces in
+`src/app/(signup)/`) is a signup form for the newsletter.
+
+- Each signup is posted to a Discord channel through a webhook. Add people to
+  the mailing list from there. Set `DISCORD_WEBHOOK_URL` wherever the site is
+  deployed (and in `.env.local` to try the form locally).
+- Under the form is the top of the latest sent edition: the newest one with HTML
+  in `archive/`. Drafts never show up.
+- The glow behind it is a cover, drawn by the same generator as the email's. It
+  drifts slowly and rearranges itself to the email being typed, in a WebGL
+  shader (`src/app/(signup)/glow.tsx`) that mirrors `src/utils/cover.ts`. With
+  reduced motion or without WebGL it stays a still image. Its colours are
+  `SIGNUP_COVER` in `src/app/(config)/constants.ts`.
+- Colours come from `theme.ts`, so the page follows the email's palette,
+  including its dark one.
 
 ## Email constraints
 

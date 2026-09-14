@@ -13,8 +13,12 @@ function getDocumentTitle({ editionNumber }: { editionNumber: number }) {
     return `${NAME} - ${getEditionName(editionNumber)}`;
 }
 
+function getOutputFilePrefix({ editionNumber }: { editionNumber: number }) {
+    return `email-${formatEditionNumber(editionNumber)}_`;
+}
+
 function getOutputFilename({ editionNumber }: { editionNumber: number }) {
-    return `email-${formatEditionNumber(editionNumber)}_${new Date().getTime()}.html`;
+    return `${getOutputFilePrefix({ editionNumber })}${new Date().getTime()}.html`;
 }
 
 function getQuestionUrl(questionId: number) {
@@ -41,6 +45,7 @@ export {
     formatEditionNumber,
     getEditionName,
     getDocumentTitle,
+    getOutputFilePrefix,
     getOutputFilename,
     getQuestionUrl,
     getCoverBackground,

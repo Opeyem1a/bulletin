@@ -1,0 +1,366 @@
+/* Colours come from theme.ts as custom properties; see src/app/page.tsx. */
+
+.page {
+    --ease-out: cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    /* Lets the glow sit behind everything without dropping behind the page. */
+    isolation: isolate;
+    overflow: hidden;
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding: 40px 16px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--page);
+    color: var(--ink);
+}
+
+.wordmark {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.intro {
+    margin-top: 96px;
+    max-width: 40rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+}
+
+.headline {
+    margin: 0;
+    font-size: clamp(2.5rem, 7vw, 4.25rem);
+    line-height: 1.06;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+}
+
+.accent {
+    color: var(--headline-accent);
+}
+
+.pitch {
+    margin: 0;
+    max-width: 31rem;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--body);
+    text-wrap: pretty;
+}
+
+.parts {
+    margin: 12px 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 20px;
+}
+
+.part {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--body);
+}
+
+.part::before {
+    content: '';
+    width: 16px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--bar);
+}
+
+.stage {
+    position: relative;
+    width: 100%;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Centred on the top of the sample edition, reaching up behind the form. */
+.glow {
+    position: absolute;
+    z-index: -1;
+    top: -120px;
+    left: 50%;
+    width: 1600px;
+    aspect-ratio: 2 / 1;
+    transform: translateX(-50%);
+    opacity: 0.9;
+    pointer-events: none;
+    -webkit-mask-image: radial-gradient(closest-side, #000 35%, transparent);
+    mask-image: radial-gradient(closest-side, #000 35%, transparent);
+    transition:
+        transform 700ms var(--ease-out),
+        opacity 700ms var(--ease-out);
+}
+
+.glow[data-bloom] {
+    transform: translateX(-50%) scale(1.08);
+    opacity: 1;
+}
+
+/* Light text on a bright glow is hard to read, so dim it in dark mode. */
+@media (prefers-color-scheme: dark) {
+    .glow {
+        opacity: 0.5;
+    }
+
+    .glow[data-bloom] {
+        opacity: 0.65;
+    }
+}
+
+.glowFade {
+    position: absolute;
+    inset: 0;
+    animation: fade-in 1200ms var(--ease-out) both;
+}
+
+.glowLayer {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.glowCanvas {
+    opacity: 0;
+    transition: opacity 600ms var(--ease-out);
+}
+
+.glowCanvas[data-ready] {
+    opacity: 1;
+}
+
+.signup {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+}
+
+.input {
+    flex-grow: 1;
+    min-width: 0;
+    height: 48px;
+    box-sizing: border-box;
+    padding: 0 14px;
+    border: 1px solid var(--questionCardBorder);
+    border-radius: 8px;
+    background: var(--card);
+    color: var(--ink);
+    font: inherit;
+    font-size: 1rem;
+}
+
+.input::placeholder {
+    color: var(--muted);
+}
+
+.input:focus-visible,
+.button:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+}
+
+.button {
+    height: 48px;
+    padding: 0 22px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--ink);
+    color: var(--card);
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        transform 150ms var(--ease-out),
+        opacity 150ms ease;
+}
+
+.button:active {
+    transform: scale(0.97);
+}
+
+.button:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.error {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.fine {
+    margin: 0;
+    font-size: 0.8125rem;
+    line-height: 1.3125rem;
+    color: var(--body);
+}
+
+.success {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    animation: enter 400ms var(--ease-out) both;
+}
+
+.successHeading {
+    margin: 0;
+    font-size: 1.375rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    outline: none;
+}
+
+.successText {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.625rem;
+    color: var(--body);
+    text-wrap: pretty;
+}
+
+.honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.visuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.sample {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    animation: rise 800ms var(--ease-out) 350ms both;
+}
+
+.sampleCaption {
+    margin: 0;
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+    color: var(--body);
+}
+
+.sampleCard {
+    height: 640px;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent);
+}
+
+/* One entrance on load: each piece rises in shortly after the one before. */
+.enter {
+    animation: enter 600ms var(--ease-out) both;
+    animation-delay: calc(var(--order, 0) * 70ms);
+}
+
+@keyframes enter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 620px) {
+    .page {
+        padding-top: 24px;
+    }
+
+    .intro {
+        margin-top: 56px;
+    }
+
+    .form {
+        flex-direction: column;
+    }
+
+    .glow {
+        top: -180px;
+        width: 1000px;
+    }
+
+    .sample {
+        margin-top: 56px;
+    }
+
+    .sampleCard {
+        height: 520px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .enter,
+    .success,
+    .sample,
+    .glowFade {
+        animation: none;
+    }
+
+    .glow,
+    .glowCanvas,
+    .button {
+        transition: none;
+    }
+}
