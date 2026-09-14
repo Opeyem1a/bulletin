@@ -1,9 +1,9 @@
-import { Aside, Text } from '@/app/(components)/text';
-import { Section } from '@/app/(components)/section';
-import { Spacer } from '@/app/(components)/spacer';
-import { UrlBadge } from '@/app/(components)/url-badge';
-import { Emoji } from '@/app/(components)/emoji';
-import { List } from '@/app/(components)/list';
+import { Aside, Text } from '@/app/(legacy)/components/text';
+import { Section } from '@/app/(legacy)/components/section';
+import { Spacer } from '@/app/(legacy)/components/spacer';
+import { UrlBadge } from '@/app/(legacy)/components/url-badge';
+import { Emoji } from '@/app/(legacy)/components/emoji';
+import { List } from '@/app/(legacy)/components/list';
 
 const EmailContent005 = () => {
     return (

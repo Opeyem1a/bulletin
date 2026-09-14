@@ -1,11 +1,11 @@
-import { Text } from '@/app/(components)/text';
-import { Section } from '@/app/(components)/section';
-import { Spacer } from '@/app/(components)/spacer';
-import { List } from '@/app/(components)/list';
-import { UrlBadge } from '@/app/(components)/url-badge';
+import { Text } from '@/app/(legacy)/components/text';
+import { Section } from '@/app/(legacy)/components/section';
+import { Spacer } from '@/app/(legacy)/components/spacer';
+import { List } from '@/app/(legacy)/components/list';
+import { UrlBadge } from '@/app/(legacy)/components/url-badge';
 import { getEditionName } from '@/app/(config)/helpers';
 import { NAME } from '@/app/(config)/constants';
-import { Emoji } from '@/app/(components)/emoji';
+import { Emoji } from '@/app/(legacy)/components/emoji';
 
 const EmailContent004 = () => {
     return (

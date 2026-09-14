@@ -14,6 +14,17 @@ const eslintConfig = [
     {
         ignores: ['node_modules/*', '**/.*', 'archive/*'],
     },
+    {
+        // These components render email HTML, where next/image can't work.
+        files: ['src/app/(components)/**'],
+        rules: { '@next/next/no-img-element': 'off' },
+    },
+    {
+        // Editions are mostly prose, so allow typing ' and " directly instead of
+        // &apos; and &quot;. React escapes them in the rendered HTML either way.
+        files: ['src/app/(email-content)/**'],
+        rules: { 'react/no-unescaped-entities': 'off' },
+    },
 ];
 
 export default eslintConfig;

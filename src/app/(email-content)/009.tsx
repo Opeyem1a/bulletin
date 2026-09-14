@@ -1,9 +1,9 @@
-import { Em, Text } from '@/app/(components)/text';
-import { Section } from '@/app/(components)/section';
-import { Spacer } from '@/app/(components)/spacer';
-import { UrlBadge } from '@/app/(components)/url-badge';
-import { Emoji } from '@/app/(components)/emoji';
-import { Callout } from '@/app/(components)/callout';
+import { Em, Text } from '@/app/(legacy)/components/text';
+import { Section } from '@/app/(legacy)/components/section';
+import { Spacer } from '@/app/(legacy)/components/spacer';
+import { UrlBadge } from '@/app/(legacy)/components/url-badge';
+import { Emoji } from '@/app/(legacy)/components/emoji';
+import { Callout } from '@/app/(legacy)/components/callout';
 
 const EmailContent009 = () => {
     return (

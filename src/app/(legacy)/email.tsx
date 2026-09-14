@@ -1,14 +1,19 @@
-import { Spacer } from '@/app/(components)/spacer';
-import { Header } from '@/app/(components)/header';
-import { Footer } from '@/app/(components)/footer';
+import { ReactNode } from 'react';
+import { Spacer } from '@/app/(legacy)/components/spacer';
+import { Header } from '@/app/(legacy)/components/header';
+import { Footer } from '@/app/(legacy)/components/footer';
 import { getDocumentTitle } from '@/app/(config)/helpers';
-import { EmailContent010 } from '@/app/(email-content)/010';
 
-interface EmailComponentProps {
+interface LegacyEmailProps {
     editionNumber: number;
+    children: ReactNode;
 }
 
-const Email = ({ editionNumber }: EmailComponentProps) => {
+/**
+ * The email shell used for editions 004–010, kept so their sources still compile.
+ * What was actually sent lives in archive/.
+ */
+const LegacyEmail = ({ editionNumber, children }: LegacyEmailProps) => {
     return (
         <html>
             <head>
@@ -43,7 +48,7 @@ const Email = ({ editionNumber }: EmailComponentProps) => {
                                     <tbody>
                                         <Header editionNumber={editionNumber} />
                                         <Spacer height="28px" />
-                                        <EmailContent010 />
+                                        {children}
                                         <Spacer height="24px" />
                                         <Footer />
                                     </tbody>
@@ -57,9 +62,4 @@ const Email = ({ editionNumber }: EmailComponentProps) => {
     );
 };
 
-const PreviewEmailPage = () => {
-    return <Email editionNumber={10} />;
-};
-
-export default PreviewEmailPage;
-export { Email };
+export { LegacyEmail };
