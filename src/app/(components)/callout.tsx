@@ -1,40 +1,44 @@
-import { CSSProperties, ReactNode } from 'react';
+import { ReactNode } from 'react';
+import {
+    COLORS,
+    FONT_STACK,
+    textColorClass,
+    backgroundColorClass,
+} from '@/app/(config)/theme';
 
 interface CalloutProps {
     children: ReactNode;
-    variant: keyof typeof CALLOUT_VARIANTS;
 }
 
-const CALLOUT_VARIANTS = {
-    base: {
-        backgroundColor: '#FFFFFF',
-        color: '#185B6A',
-        border: '2px solid #185B6A',
-        fontWeight: 500,
-    },
-} satisfies Record<string, CSSProperties>;
-
-const Callout = ({ children, variant }: CalloutProps) => {
+const Callout = ({ children }: CalloutProps) => {
     return (
-        <div
-            style={{
-                borderRadius: '8px',
-                padding: '16px 24px',
-                margin: '16px 0',
-                ...CALLOUT_VARIANTS[variant],
-            }}
+        <table
+            role="presentation"
+            width="100%"
+            cellPadding={0}
+            cellSpacing={0}
+            border={0}
+            style={{ marginTop: '16px' }}
         >
-            <p
-                style={{
-                    maxWidth: '32ch',
-                    margin: '0',
-                    fontSize: '16px',
-                    lineHeight: 1.65,
-                }}
-            >
-                {children}
-            </p>
-        </div>
+            <tbody>
+                <tr>
+                    <td
+                        className={`${backgroundColorClass('calloutBackground')} ${textColorClass('calloutInk')}`}
+                        style={{
+                            backgroundColor: COLORS.calloutBackground,
+                            borderRadius: '8px',
+                            padding: '12px 16px',
+                            fontFamily: FONT_STACK,
+                            fontSize: '15px',
+                            lineHeight: '22px',
+                            color: COLORS.calloutInk,
+                        }}
+                    >
+                        {children}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     );
 };
 

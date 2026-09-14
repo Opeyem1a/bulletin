@@ -1,53 +1,66 @@
-import { CSSProperties, ReactNode } from 'react';
+import { ReactNode } from 'react';
+import { COLORS, FONT_STACK, textColorClass } from '@/app/(config)/theme';
 
 interface TextProps {
     children: ReactNode;
-    variant: keyof typeof TEXT_VARIANTS;
 }
 
-const TEXT_VARIANTS = {
-    header: {
-        fontSize: '16px',
-        lineHeight: 1,
-        fontWeight: 600,
-        textDecoration: 'underline',
-        color: '#185B6A',
-    },
-    base: {
-        fontSize: '16px',
-        lineHeight: 1.65,
-        color: '#374151',
-    },
-    aside: {
-        fontSize: '12px',
-        lineHeight: 1.65,
-        color: '#374151',
-        opacity: 0.8,
-    },
-    em: {
-        color: '#374151',
-        opacity: 0.8,
-    },
-} satisfies Record<string, CSSProperties>;
-
-const Text = ({ children, variant }: TextProps) => {
-    return <p style={TEXT_VARIANTS[variant]}>{children}</p>;
-};
-
-const Em = ({ children }: Omit<TextProps, 'variant'>) => {
+const Heading = ({ children }: TextProps) => {
     return (
-        <span style={TEXT_VARIANTS['em']}>
-            <i>{children}</i>
-        </span>
+        <h2
+            className={textColorClass('ink')}
+            style={{
+                margin: '14px 0 0',
+                fontFamily: FONT_STACK,
+                fontSize: '22px',
+                lineHeight: '28px',
+                fontWeight: 600,
+                letterSpacing: '-0.3px',
+                color: COLORS.ink,
+            }}
+        >
+            {children}
+        </h2>
     );
 };
 
-const Aside = ({ children }: Omit<TextProps, 'variant'>) => {
+const Paragraph = ({ children }: TextProps) => {
     return (
-        <span style={TEXT_VARIANTS['aside']}>
-            <i>{children}</i>
-        </span>
+        <p
+            className={textColorClass('body')}
+            style={{
+                margin: '12px 0 0',
+                fontFamily: FONT_STACK,
+                fontSize: '16px',
+                lineHeight: '26px',
+                color: COLORS.body,
+            }}
+        >
+            {children}
+        </p>
     );
 };
 
-export { Text, Aside, Em };
+const Em = ({ children }: TextProps) => {
+    return <em>{children}</em>;
+};
+
+interface LinkProps {
+    href: string;
+    children: ReactNode;
+}
+
+const Link = ({ href, children }: LinkProps) => {
+    return (
+        <a
+            href={href}
+            target="_blank"
+            className={textColorClass('ink')}
+            style={{ color: COLORS.ink, textDecoration: 'underline' }}
+        >
+            {children}
+        </a>
+    );
+};
+
+export { Heading, Paragraph, Em, Link };
