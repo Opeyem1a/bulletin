@@ -52,8 +52,8 @@ form under it.
   deployed (and in `.env.local` to try the form locally).
 - The hand-drawn marks on the paragraph (circle, squiggle, note, highlighter)
   are in `src/app/(signup)/marks.tsx`, styled in `src/app/(signup)/signup.css`.
-- The page uses the email's palette, light and dark, copied from `theme.ts` into
-  the top of `signup.css`. If the palette changes, update both.
+- The page has its own palette at the top of `signup.css`: cream in light mode,
+  navy in dark mode, and coral for the hand-drawn marks.
 
 ## Email constraints
 

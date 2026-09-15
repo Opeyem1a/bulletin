@@ -63,7 +63,7 @@ const SignupForm = () => {
                         </label>
                     </div>
                     <button type="submit" disabled={pending} className="button">
-                        Sign me up
+                        let me in pls
                     </button>
                 </form>
             )}

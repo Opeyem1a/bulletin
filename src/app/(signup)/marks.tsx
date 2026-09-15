@@ -23,7 +23,7 @@ const keepWith = (mark: ReactNode, then?: string) =>
 
 const Circled = ({ children, then }: MarkProps) => {
     return keepWith(
-        <span className="mark">
+        <span className="mark circled">
             {children}
             <svg
                 className="drawing circle"
@@ -44,11 +44,11 @@ const Squiggled = ({ children, then }: MarkProps) => {
             {children}
             <svg
                 className="drawing squiggle"
-                viewBox="0 0 120 10"
+                viewBox="0 0 120 12"
                 preserveAspectRatio="none"
                 aria-hidden
             >
-                <path d="M2 6 Q 8 1, 14 6 T 26 6 T 38 6 T 50 6 T 62 6 T 74 6 T 86 6 T 98 6 T 110 6 T 118 5" />
+                <path d="M1 7 C 6 1, 10 1, 15 6 S 23 12, 29 6 S 38 0, 44 6 S 52 12, 58 6 S 67 1, 72 6 S 80 11, 86 6 S 95 1, 100 6 S 108 11, 113 6 S 118 3, 119 4" />
             </svg>
         </span>,
         then
@@ -59,7 +59,7 @@ interface NotedProps extends MarkProps {
     note: string;
 }
 
-/** A scribbled note above the words (after them on phones). Read as an aside. */
+/** A scribbled note, raised just after the words. Read as an aside. */
 const Noted = ({ children, note, then }: NotedProps) => {
     return keepWith(
         <span className="mark noted">
@@ -70,21 +70,42 @@ const Noted = ({ children, note, then }: NotedProps) => {
     );
 };
 
-interface HighlightedProps extends MarkProps {
-    /** Which section of the email, for its colour. */
-    section: 'notes' | 'changed-mind' | 'found' | 'question';
-}
-
-/** A highlighter stroke, in the colour of one of the email's sections. */
-const Highlighted = ({ children, section, then }: HighlightedProps) => {
-    return keepWith(
-        <span className={`highlight highlight-${section}`}>{children}</span>,
-        then
-    );
+/** A highlighter stroke, in the accent colour. */
+const Highlighted = ({ children, then }: MarkProps) => {
+    return keepWith(<span className="highlight">{children}</span>, then);
 };
 
 const Struck = ({ children, then }: MarkProps) => {
     return keepWith(<span className="struck">{children}</span>, then);
 };
 
-export { Circled, Squiggled, Noted, Highlighted, Struck };
+/**
+ * Makes the marks and the note wobble like hand-drawn animation ("line boil"): noise nudges
+ * each stroke, and the noise is re-rolled a few times a second. signup.css
+ * applies it only when reduced motion isn't requested. Render once per page.
+ */
+const ScribbleFilter = () => {
+    return (
+        <svg className="scribble-filter" aria-hidden focusable="false">
+            <filter id="scribble" x="-20%" y="-50%" width="140%" height="200%">
+                <feTurbulence
+                    type="fractalNoise"
+                    baseFrequency="0.015"
+                    numOctaves={1}
+                    seed="1"
+                >
+                    <animate
+                        attributeName="seed"
+                        values="1;7;13;21"
+                        dur="0.5s"
+                        calcMode="discrete"
+                        repeatCount="indefinite"
+                    />
+                </feTurbulence>
+                <feDisplacementMap in="SourceGraphic" scale="4" />
+            </filter>
+        </svg>
+    );
+};
+
+export { Circled, Squiggled, Noted, Highlighted, Struck, ScribbleFilter };
