@@ -1,22 +1,45 @@
 import { encode } from 'jpeg-js';
-import { createRandom, getCoverLayout } from '@/utils/cover-layout';
 import { Edition } from '@/utils/types';
 
 const WIDTH = 1200;
 const HEIGHT = 600;
 
 /**
+ * Deterministic random numbers, so the same seed always draws the same cover.
+ */
+function createRandom(seed: number) {
+    let state = seed >>> 0;
+    return () => {
+        state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+        return state / 4294967296;
+    };
+}
+
+function hexToRgb(hex: string): [number, number, number] {
+    const value = parseInt(hex.slice(1), 16);
+    return [(value >> 16) & 0xff, (value >> 8) & 0xff, value & 0xff];
+}
+
+/**
  * Draws a soft gradient as a 1200×600 JPEG: coloured points blended by inverse
- * distance, gently warped so the colour edges curve, with a little grain. The
- * signup page's glow draws the same gradient in a shader
- * (src/app/(signup)/glow.tsx), so keep the two in step.
+ * distance, gently warped so the colour edges curve, with a little grain.
  */
 function generateCover({ seed, colors }: Edition['cover']): Buffer {
     const random = createRandom(seed);
-    const { points, warpX, warpY, phaseX, phaseY } = getCoverLayout(
-        colors,
-        random
+    const rgbs = colors.map(hexToRgb);
+
+    const points = Array.from(
+        { length: Math.max(6, rgbs.length * 2) },
+        (_, i) => ({
+            x: random() * 1.3 - 0.15,
+            y: random() * 1.3 - 0.15,
+            rgb: rgbs[i % rgbs.length],
+        })
     );
+    const warpX = 1.5 + random() * 2;
+    const warpY = 1.5 + random() * 2;
+    const phaseX = random() * 6.28;
+    const phaseY = random() * 6.28;
 
     const data = Buffer.alloc(WIDTH * HEIGHT * 4);
     for (let py = 0; py < HEIGHT; py++) {

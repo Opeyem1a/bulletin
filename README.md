@@ -41,26 +41,19 @@ rendered to email HTML, then sent from Gmail with Apps Script.
 The HTML is plain ASCII (other characters are written as entities), so it's safe
 to paste into Apps Script.
 
-Committing the archived HTML also makes the edition the sample on the signup
-page, from the next deploy.
-
 ## Signup page
 
 The site's home page (`src/app/page.tsx`, with its pieces in
-`src/app/(signup)/`) is a signup form for the newsletter.
+`src/app/(signup)/`) is a single paragraph about the newsletter with a signup
+form under it.
 
 - Each signup is posted to a Discord channel through a webhook. Add people to
   the mailing list from there. Set `DISCORD_WEBHOOK_URL` wherever the site is
   deployed (and in `.env.local` to try the form locally).
-- Under the form is the top of the latest sent edition: the newest one with HTML
-  in `archive/`. Drafts never show up.
-- The glow behind it is a cover, drawn by the same generator as the email's. It
-  drifts slowly and rearranges itself to the email being typed, in a WebGL
-  shader (`src/app/(signup)/glow.tsx`) that mirrors `src/utils/cover.ts`. With
-  reduced motion or without WebGL it stays a still image. Its colours are
-  `SIGNUP_COVER` in `src/app/(config)/constants.ts`.
-- Colours come from `theme.ts`, so the page follows the email's palette,
-  including its dark one.
+- The hand-drawn marks on the paragraph (circle, squiggle, note, highlighter)
+  are in `src/app/(signup)/marks.tsx`, styled in `src/app/(signup)/signup.css`.
+- The page uses the email's palette, light and dark, copied from `theme.ts` into
+  the top of `signup.css`. If the palette changes, update both.
 
 ## Email constraints
 

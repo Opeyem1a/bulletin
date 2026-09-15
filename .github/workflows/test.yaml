@@ -21,8 +21,6 @@ jobs:
         run: yarn
       - name: Lint
         run: yarn lint
-      # Before build:html, which writes to archive/ and would make the latest
-      # edition look sent to the signup page.
       - name: Build site
         run: yarn build
       - name: Build email

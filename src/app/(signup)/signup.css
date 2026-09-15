@@ -1,0 +1,347 @@
+/*
+ * Colours are the email's palette from src/app/(config)/theme.ts, copied here
+ * so this stays plain CSS. Update both if the palette changes. --circle and
+ * --struck are the page's own: the theme's coral and muted are too light to
+ * read on the page colour.
+ */
+:root {
+    color-scheme: light dark;
+    --page: #efece7;
+    --card: #ffffff;
+    --ink: #1b1b1b;
+    --body: #3a3835;
+    --muted: #8e8a84;
+    --border: #ece8e1;
+    --circle: #e5504b;
+    --struck: #85817b;
+    /* The section colours, see-through enough to read ink over. */
+    --highlight-notes: #f5a52465;
+    --highlight-changed-mind: #2fa66f65;
+    --highlight-found: #3e8ede65;
+    --highlight-question: #ff616065;
+    --squiggle: #2fa66f;
+    --ease-out: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --page: #0e0d0c;
+        --card: #161514;
+        --ink: #ede9e4;
+        --body: #cfcac3;
+        --muted: #9a938b;
+        --border: #2a2724;
+        --circle: #ff7a72;
+        --struck: #9a938b;
+    }
+}
+
+body {
+    margin: 0;
+    background: var(--page);
+}
+
+.page {
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding: 80px clamp(22px, 9vw, 140px);
+    display: flex;
+    align-items: center;
+    color: var(--ink);
+    font-family:
+        var(--font-manrope),
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        Roboto,
+        Arial,
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.content {
+    width: 100%;
+    max-width: 70rem;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(40px, 5vw, 64px);
+}
+
+.paragraph {
+    margin: 0;
+    /* 28px on phones up to 46px on wide screens. */
+    font-size: clamp(1.75rem, 1rem + 2.6vw, 2.875rem);
+    line-height: 1.5;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    text-wrap: pretty;
+}
+
+.name {
+    font-weight: 700;
+}
+
+/* ---------- Hand-drawn marks ---------- */
+
+.mark {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.drawing {
+    position: absolute;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.drawing path {
+    fill: none;
+    stroke-linecap: round;
+    stroke-width: 2.6px;
+    vector-effect: non-scaling-stroke;
+    /*
+     * Drawn in on load, like a pen stroke: one dash longer than any mark, slid
+     * into place. (pathLength can't be used, it disagrees with non-scaling
+     * strokes.)
+     */
+    stroke-dasharray: 1500;
+    stroke-dashoffset: 1500;
+    animation: draw 700ms var(--ease-out) forwards;
+}
+
+.circle {
+    left: -8%;
+    top: -18%;
+    width: 116%;
+    height: 136%;
+}
+
+.circle path {
+    stroke: var(--circle);
+    animation-delay: 300ms;
+}
+
+.squiggle {
+    left: 0;
+    bottom: -0.12em;
+    width: 100%;
+    height: 0.24em;
+}
+
+.squiggle path {
+    stroke: var(--squiggle);
+    animation-delay: 650ms;
+}
+
+.note {
+    position: absolute;
+    left: 50%;
+    top: -0.78em;
+    transform: translateX(-50%) rotate(-5deg);
+    font-family: var(--font-caveat), 'Comic Sans MS', cursive;
+    font-size: 0.62em;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: var(--body);
+    white-space: nowrap;
+}
+
+.highlight {
+    white-space: nowrap;
+    background: linear-gradient(
+            100deg,
+            transparent 1%,
+            var(--highlight) 3%,
+            var(--highlight) 96%,
+            transparent 99%
+        )
+        0 88% / 100% 0.5em no-repeat;
+}
+
+.highlight-notes {
+    --highlight: var(--highlight-notes);
+}
+
+.highlight-changed-mind {
+    --highlight: var(--highlight-changed-mind);
+}
+
+.highlight-found {
+    --highlight: var(--highlight-found);
+}
+
+.highlight-question {
+    --highlight: var(--highlight-question);
+}
+
+.struck {
+    white-space: nowrap;
+    color: var(--struck);
+    text-decoration: line-through;
+    text-decoration-thickness: 0.06em;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* ---------- Form ---------- */
+
+.signup {
+    max-width: 44rem;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.form {
+    display: flex;
+    gap: 10px;
+}
+
+.input {
+    flex-grow: 1;
+    min-width: 0;
+    height: 56px;
+    box-sizing: border-box;
+    padding: 0 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--card);
+    color: var(--ink);
+    font: inherit;
+    font-size: 1.125rem;
+}
+
+.input::placeholder {
+    color: var(--muted);
+}
+
+.input:focus-visible,
+.button:focus-visible,
+.success:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+}
+
+.button {
+    height: 56px;
+    padding: 0 26px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--ink);
+    color: var(--card);
+    font: inherit;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        transform 150ms var(--ease-out),
+        opacity 150ms ease;
+}
+
+.button:active {
+    transform: scale(0.97);
+}
+
+.button:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.success {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--body);
+    outline: none;
+    animation: enter 400ms var(--ease-out) both;
+}
+
+.success strong {
+    color: var(--ink);
+}
+
+.error {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.fine {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--body);
+}
+
+.honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+@keyframes enter {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+}
+
+@media (max-width: 620px) {
+    .paragraph {
+        line-height: 1.62;
+    }
+
+    /* Lines sit too close for a note above the words, so it follows them. */
+    .noted {
+        display: inline;
+        white-space: normal;
+    }
+
+    .note {
+        position: static;
+        display: inline-block;
+        transform: rotate(-5deg);
+        vertical-align: 0.5em;
+    }
+
+    .form {
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .drawing path {
+        stroke-dashoffset: 0;
+        animation: none;
+    }
+
+    .success,
+    .button {
+        animation: none;
+        transition: none;
+    }
+}

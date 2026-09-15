@@ -1,5 +1,18 @@
 import type { Metadata } from 'next';
+import { Caveat, Manrope } from 'next/font/google';
 import { NAME } from '@/app/(config)/constants';
+
+// Self-hosted at build, so the page makes no requests to Google.
+const manrope = Manrope({
+    subsets: ['latin'],
+    weight: ['500', '700'],
+    variable: '--font-manrope',
+});
+const caveat = Caveat({
+    subsets: ['latin'],
+    weight: ['700'],
+    variable: '--font-caveat',
+});
 
 export const metadata: Metadata = {
     title: NAME,
@@ -13,27 +26,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <head>
-                {/*
-                  The same Manrope stylesheet the email loads, rather than
-                  next/font, which renames the family: the sample edition's
-                  inline styles ask for "Manrope" by name. This is the root
-                  layout, so the lint rule's warning about loading a font on a
-                  single page doesn't apply.
-                */}
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link
-                    rel="preconnect"
-                    href="https://fonts.gstatic.com"
-                    crossOrigin=""
-                />
-                {/* eslint-disable-next-line @next/next/no-page-custom-font */}
-                <link
-                    rel="stylesheet"
-                    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap"
-                />
-            </head>
+        <html lang="en" className={`${manrope.variable} ${caveat.variable}`}>
             <body>{children}</body>
         </html>
     );
