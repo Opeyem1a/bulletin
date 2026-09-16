@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
 import { Caveat, Manrope } from 'next/font/google';
 import { NAME } from '@/app/(config)/constants';
 
@@ -27,7 +28,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className={`${manrope.variable} ${caveat.variable}`}>
-            <body>{children}</body>
+            <body>
+                {children}
+                <Analytics />
+            </body>
         </html>
     );
 }
