@@ -3,11 +3,18 @@ import { getEdition, getLatestEdition } from '@/app/(email-content)/editions';
 import { generateCover } from '@/utils/cover';
 
 /**
- * Live preview of an edition, exactly as the email renders: `/` shows the
- * latest, `/?edition=10` a specific one. The cover is drawn on each request, so
- * edits to its colours or seed show up on refresh.
+ * Live preview of an edition, exactly as the email renders: `/preview` shows the
+ * latest, `/preview?edition=11` a specific one. The cover is drawn on each
+ * request, so edits to its colours or seed show up on refresh.
+ *
+ * Local only: the site is public, and the latest edition is usually an unsent
+ * draft.
  */
 export async function GET(request: Request) {
+    if (process.env.NODE_ENV === 'production') {
+        return new Response('Not found', { status: 404 });
+    }
+
     const param = new URL(request.url).searchParams.get('edition');
     const edition = param ? getEdition(Number(param)) : getLatestEdition();
     if (!edition) {

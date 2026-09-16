@@ -1,0 +1,360 @@
+/*
+ * Light mode is cream, dark mode is navy, and coral is the pen: the circle,
+ * squiggle, highlight and note are all drawn in it.
+ */
+:root {
+    color-scheme: light dark;
+    --page: #fff2e1;
+    --field: #fafafa;
+    --ink: #2d3b60;
+    --body: #4d5877;
+    --placeholder: #646c82;
+    --border: #2d3b6026;
+    --struck: #7c8499;
+    --accent: #ff8787;
+    /* The accent, see-through enough to read words over. */
+    --accent-highlight: #ff878766;
+    /* Coral itself is too faint for text on cream, so the note is a deeper one. */
+    --note: #db5a5a;
+    --button: #2d3b60;
+    --button-text: #fff2e1;
+    --ease-out: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* The palette's navy, much darker, so the page recedes behind the words. */
+        --page: #141b2e;
+        --field: #1f2842;
+        --ink: #fafafa;
+        --body: #d5d9e2;
+        --placeholder: #aeb5c8;
+        --border: #fafafa26;
+        --struck: #9aa3bd;
+        --accent-highlight: #ff878780;
+        --note: #ff8787;
+        --button: #ff8787;
+        --button-text: #141b2e;
+    }
+}
+
+body {
+    margin: 0;
+    background: var(--page);
+}
+
+.page {
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding: 80px clamp(22px, 9vw, 140px);
+    display: flex;
+    align-items: center;
+    color: var(--ink);
+    font-family:
+        var(--font-manrope),
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        Roboto,
+        Arial,
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.content {
+    width: 100%;
+    max-width: 70rem;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(40px, 5vw, 64px);
+}
+
+.paragraph {
+    margin: 0;
+    /* 28px on phones up to 46px on wide screens. */
+    font-size: clamp(1.75rem, 1rem + 2.6vw, 2.875rem);
+    line-height: 1.5;
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    text-wrap: pretty;
+}
+
+.name {
+    font-weight: 700;
+}
+
+/* ---------- Hand-drawn marks ---------- */
+
+.mark {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.drawing {
+    position: absolute;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.drawing path {
+    fill: none;
+    stroke-linecap: round;
+    stroke-width: 2.6px;
+    vector-effect: non-scaling-stroke;
+    /*
+     * Drawn in on load, like a pen stroke: one dash longer than any mark, slid
+     * into place. (pathLength can't be used, it disagrees with non-scaling
+     * strokes.)
+     */
+    stroke-dasharray: 1500;
+    stroke-dashoffset: 1500;
+    animation: draw 700ms var(--ease-out) forwards;
+}
+
+/* The circle overhangs its words, so leave room for it before the next ones. */
+.circled {
+    margin-inline: 0.12em;
+}
+
+.circle {
+    left: -5%;
+    top: -18%;
+    width: 110%;
+    height: 136%;
+}
+
+.circle path {
+    stroke: var(--accent);
+    animation-delay: 300ms;
+}
+
+/* Hugs the words, stopping just inside both ends. */
+.squiggle {
+    left: 1%;
+    bottom: -0.04em;
+    width: 98%;
+    height: 0.34em;
+}
+
+.squiggle path {
+    stroke: var(--accent);
+    stroke-width: 4.5px;
+    animation-delay: 650ms;
+}
+
+/*
+ * Raised just after its words. Above them looked nicer, but it collides with
+ * the line above whenever the words aren't on the first line.
+ */
+.noted {
+    display: inline;
+}
+
+.note {
+    display: inline-block;
+    margin-inline: 0.06em 0.1em;
+    vertical-align: 0.55em;
+    transform: rotate(-5deg);
+    font-family: var(--font-caveat), 'Comic Sans MS', cursive;
+    /* Big enough to count as large text, where the accent has enough contrast. */
+    font-size: max(0.62em, 19px);
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: var(--note);
+    white-space: nowrap;
+}
+
+.highlight {
+    position: relative;
+    isolation: isolate;
+    white-space: nowrap;
+}
+
+/* The stroke is its own layer behind the words, so it can wobble while they don't. */
+.highlight::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+            100deg,
+            transparent 1%,
+            var(--accent-highlight) 3%,
+            var(--accent-highlight) 96%,
+            transparent 99%
+        )
+        0 88% / 100% 0.5em no-repeat;
+}
+
+.scribble-filter {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .drawing,
+    .highlight::before,
+    .note {
+        filter: url(#scribble);
+    }
+}
+
+.struck {
+    white-space: nowrap;
+    color: var(--struck);
+    text-decoration: line-through;
+    text-decoration-thickness: 0.06em;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* ---------- Form ---------- */
+
+.signup {
+    max-width: 44rem;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.form {
+    display: flex;
+    gap: 10px;
+}
+
+.input {
+    flex-grow: 1;
+    min-width: 0;
+    height: 56px;
+    box-sizing: border-box;
+    padding: 0 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--field);
+    color: var(--ink);
+    font: inherit;
+    font-size: 1.125rem;
+}
+
+.input::placeholder {
+    color: var(--placeholder);
+}
+
+.input:focus-visible,
+.button:focus-visible,
+.success:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+}
+
+.button {
+    height: 56px;
+    padding: 0 26px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--button);
+    color: var(--button-text);
+    font: inherit;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        transform 150ms var(--ease-out),
+        opacity 150ms ease;
+}
+
+.button:active {
+    transform: scale(0.97);
+}
+
+.button:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+.success {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--body);
+    outline: none;
+    animation: enter 400ms var(--ease-out) both;
+}
+
+.success strong {
+    color: var(--ink);
+}
+
+.error {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.fine {
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--body);
+}
+
+.honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+@keyframes enter {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+}
+
+@media (max-width: 620px) {
+    .paragraph {
+        line-height: 1.62;
+    }
+
+    .form {
+        flex-direction: column;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .drawing path {
+        stroke-dashoffset: 0;
+        animation: none;
+    }
+
+    .success,
+    .button {
+        animation: none;
+        transition: none;
+    }
+}
