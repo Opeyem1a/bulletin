@@ -1,7 +1,8 @@
 'use client';
 
 import { useActionState, useEffect, useRef, useState } from 'react';
-import { subscribe, SignupState } from '@/app/(signup)/actions';
+import { subscribe } from '@/app/(signup)/actions';
+import type { SignupState } from '@/app/(signup)/types';
 
 const INITIAL_STATE: SignupState = { status: 'idle' };
 
