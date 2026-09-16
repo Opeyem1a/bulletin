@@ -11,6 +11,8 @@
     --placeholder: #5a6070;
     --border: #14182126;
     --struck: #767c8b;
+    /* The dot screen, pressed into paper. */
+    --screen-opacity: 0.13;
     --accent: #ff8787;
     /* The accent, see-through enough to read words over. */
     --accent-highlight: #ff878766;
@@ -36,12 +38,53 @@
         --note: #ff8787;
         --button: #ff8787;
         --button-text: #0c0c0d;
+        /* Light dots on near-black read much louder, so back it right off. */
+        --screen-opacity: 0.07;
     }
 }
 
 body {
     margin: 0;
     background: var(--page);
+}
+
+/*
+ * A halftone dot screen over the whole page, the way newsprint is actually
+ * printed: coarse dots with edges soft enough to read as bled ink, set at an
+ * angle so the grid never lines up with the text.
+ *
+ * The dots are currentColor, so they are dark on paper and light on the black
+ * page without needing a second tile.
+ *
+ * Rotating means the layer has to be bigger than the viewport, or its corners
+ * sweep into view. A rotated rectangle covers the screen once it is
+ * (w*cos + h*sin) by (w*sin + h*cos); at 15deg that is 0.97w + 0.26h by
+ * 0.26w + 0.97h, rounded up here for slack. Sizing it from the rotation
+ * rather than a flat percentage keeps it correct on a narrow phone, where a
+ * fixed oversize either leaves a gap or wastes a lot of layer.
+ *
+ * It also has to be its own compositing layer. The marks below it repaint
+ * eight times a second (see the scribble filter), and without the promotion
+ * the browser re-tiles this whole layer on every one of those.
+ */
+.page::after {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: calc(100vw + 28vh);
+    height: calc(28vw + 100vh);
+    z-index: 1;
+    pointer-events: none;
+    opacity: var(--screen-opacity);
+    transform: translate(-50%, -50%) rotate(15deg);
+    will-change: transform;
+    background-image: radial-gradient(
+        circle at 50% 50%,
+        currentcolor 0 1.1px,
+        transparent 2.6px
+    );
+    background-size: 6px 6px;
 }
 
 .page {
