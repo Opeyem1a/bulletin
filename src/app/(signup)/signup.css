@@ -1,31 +1,32 @@
 /*
- * Light mode is cream, dark mode is navy, and coral is the pen: the circle,
- * squiggle, highlight and note are all drawn in it.
+ * Light mode is the bulletin's own paper, dark mode is near-black, and coral is
+ * the pen: the circle, squiggle, highlight and note are all drawn in it.
  */
 :root {
     color-scheme: light dark;
-    --page: #fff2e1;
-    --field: #fafafa;
-    --ink: #2d3b60;
-    --body: #4d5877;
-    --placeholder: #646c82;
-    --border: #2d3b6026;
-    --struck: #7c8499;
+    --page: #efece7;
+    --field: #fbf9f6;
+    --ink: #141821;
+    --body: #373d4b;
+    --placeholder: #5a6070;
+    --border: #14182126;
+    --struck: #767c8b;
     --accent: #ff8787;
     /* The accent, see-through enough to read words over. */
     --accent-highlight: #ff878766;
-    /* Coral itself is too faint for text on cream, so the note is a deeper one. */
+    /* Coral itself is too faint for text on paper, so the note is a deeper one. */
     --note: #db5a5a;
-    --button: #2d3b60;
-    --button-text: #fff2e1;
+    --button: #141821;
+    --button-text: #efece7;
     --ease-out: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        /* The palette's navy, much darker, so the page recedes behind the words. */
-        --page: #141b2e;
-        --field: #1f2842;
+        /* Neutral near-black: any blue left in it reads as a cast at this
+         * luminance, so the coral is the only color on the page. */
+        --page: #0c0c0d;
+        --field: #19191b;
         --ink: #fafafa;
         --body: #d5d9e2;
         --placeholder: #aeb5c8;
@@ -34,7 +35,7 @@
         --accent-highlight: #ff878780;
         --note: #ff8787;
         --button: #ff8787;
-        --button-text: #141b2e;
+        --button-text: #0c0c0d;
     }
 }
 

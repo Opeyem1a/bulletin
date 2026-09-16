@@ -1,9 +1,6 @@
 'use server';
 
-type SignupState =
-    | { status: 'idle' }
-    | { status: 'success' }
-    | { status: 'error'; message: string };
+import type { SignupState } from '@/app/(signup)/types';
 
 // Deliberately loose, since a person reads every signup. Backticks are excluded
 // because the address is posted to Discord inside a code span.
@@ -65,4 +62,3 @@ async function subscribe(
 }
 
 export { subscribe };
-export type { SignupState };
