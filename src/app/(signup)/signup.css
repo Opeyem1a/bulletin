@@ -30,10 +30,10 @@
         --page: #0c0c0d;
         --field: #19191b;
         --ink: #fafafa;
-        --body: #d5d9e2;
-        --placeholder: #aeb5c8;
+        --body: #d9d9d9;
+        --placeholder: #b5b5b5;
         --border: #fafafa26;
-        --struck: #9aa3bd;
+        --struck: #a3a3a3;
         --accent-highlight: #ff878780;
         --note: #ff8787;
         --button: #ff8787;
@@ -266,13 +266,15 @@ body {
 /* ---------- Form ---------- */
 
 .signup {
-    max-width: 44rem;
     display: flex;
     flex-direction: column;
     gap: 14px;
 }
 
+/* Only the form is capped: the success message gets the full column, so it
+ * stays on one line on desktop. */
 .form {
+    max-width: 44rem;
     display: flex;
     gap: 10px;
 }
@@ -332,6 +334,7 @@ body {
     font-size: 1.25rem;
     line-height: 1.6;
     color: var(--body);
+    text-wrap: pretty;
     outline: none;
     animation: enter 400ms var(--ease-out) both;
 }
