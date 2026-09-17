@@ -49,7 +49,8 @@ form under it.
 
 - Each signup is posted to a Discord channel through a webhook. Add people to
   the mailing list from there. Set `DISCORD_WEBHOOK_URL` wherever the site is
-  deployed (and in `.env.local` to try the form locally).
+  deployed. To try the form locally, copy `sample.env` to `.env.local` and fill
+  it in.
 - The hand-drawn marks on the paragraph (circle, squiggle, note, highlighter)
   are in `src/app/(signup)/marks.tsx`, styled in `src/app/(signup)/signup.css`.
 - The page has its own palette at the top of `signup.css`: cream in light mode,
