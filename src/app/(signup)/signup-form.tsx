@@ -46,7 +46,7 @@ const SignupForm = () => {
                         type="email"
                         required
                         autoComplete="email"
-                        placeholder="you@example.com"
+                        placeholder="you@maybe.com"
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
                         aria-invalid={state.status === 'error'}
