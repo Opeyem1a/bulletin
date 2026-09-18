@@ -17,8 +17,9 @@ function getOutputFilename({ editionNumber }: { editionNumber: number }) {
     return `email-${formatEditionNumber(editionNumber)}_${new Date().getTime()}.html`;
 }
 
+// `from` marks visits to WDYT that came from the newsletter.
 function getQuestionUrl(questionId: number) {
-    return `https://www.wdyt.site/ask/q/${questionId}`;
+    return `https://www.wdyt.site/ask/q/${questionId}?from=newsletter`;
 }
 
 /**
