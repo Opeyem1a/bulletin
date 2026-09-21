@@ -61,7 +61,7 @@ const Masthead = ({ edition }: MastheadProps) => {
                         color: COLORS.muted,
                     }}
                 >
-                    ({edition.vibe})
+                    {edition.vibe}
                 </p>
                 <GradientLine colors={edition.colors} />
             </td>
