@@ -1,28 +1,20 @@
 import { Section } from '@/app/(components)/section';
-import { Em, Heading, Link, Paragraph } from '@/app/(components)/text';
-import { Callout } from '@/app/(components)/callout';
+import { Aside, Em, Heading, Link, Paragraph } from '@/app/(components)/text';
 import { FoundItem, FoundList } from '@/app/(components)/found';
+import { Question } from '@/app/(components)/question';
 import { Edition } from '@/utils/types';
 
 /**
  * Draft of edition 011. Everything below is placeholder, copied from 010 to show
- * the new format: replace the vibe, cover, question and content before sending.
+ * the new format: replace the vibe, colours and content before sending.
  */
 const edition011: Edition = {
     number: 11,
     vibe: 'relieved to be writing again',
-    cover: {
-        seed: 4,
-        colors: ['#FF8A6B', '#FFC46B', '#FFE9C7', '#F2637E'],
-    },
-    question: {
-        id: 1035,
-        text: 'What do you admire about your father?',
-        tags: ['be wholesome', 'about your circle'],
-    },
+    colors: ['#FF8A6B', '#FFC46B', '#FFE9C7', '#F2637E'],
     content: (
         <>
-            <Section kind="notes">
+            <Section>
                 <Heading>Hello again</Heading>
                 <Paragraph>
                     Hey. I've resolved to stop apologizing for breaks. Instead,
@@ -40,7 +32,7 @@ const edition011: Edition = {
                     you have curious questions to contribute.
                 </Paragraph>
             </Section>
-            <Section kind="notes">
+            <Section>
                 <Heading>When art sees you</Heading>
                 <Paragraph>
                     I've been deep in a new comic I picked up recently. It's a
@@ -54,7 +46,7 @@ const edition011: Edition = {
                     compels, and convicts.
                 </Paragraph>
             </Section>
-            <Section kind="notes">
+            <Section>
                 <Heading>An ode to unopened letters</Heading>
                 <Paragraph>
                     I think I've mentioned before that one of my closest friends
@@ -76,9 +68,11 @@ const edition011: Edition = {
                     mere threat of unfiltered emotional expression is enough to
                     provoke a smile.
                 </Paragraph>
-                <Callout>P.S. I hope life is lovely, N.</Callout>
+                <Paragraph>
+                    <Aside>P.S. I hope life is lovely, N.</Aside>
+                </Paragraph>
             </Section>
-            <Section kind="changed-mind">
+            <Section>
                 <Heading>Frameworks for connection-building games</Heading>
                 <Paragraph>
                     I've been trying to make a board game that somehow makes
@@ -113,7 +107,7 @@ const edition011: Edition = {
                     in this vein, I would love to chat.
                 </Paragraph>
             </Section>
-            <Section kind="found">
+            <Section>
                 <Heading>Hey, these were interesting</Heading>
                 <FoundList>
                     <FoundItem url="https://www.folllit.com/" title="Folllit">
@@ -153,6 +147,12 @@ const edition011: Edition = {
                         (paywalled).
                     </FoundItem>
                 </FoundList>
+            </Section>
+            <Section>
+                <Question
+                    id={1035}
+                    text="What do you admire about your father?"
+                />
             </Section>
         </>
     ),

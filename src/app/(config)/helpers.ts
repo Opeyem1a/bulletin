@@ -22,10 +22,10 @@ function getQuestionUrl(questionId: number) {
 }
 
 /**
- * The average of the cover colours. Shown behind the cover while it loads, or
- * instead of it when a client blocks images.
+ * The average of the edition's colours. Shown instead of the gradient line by
+ * clients that can't draw gradients (Outlook on Windows, Gmail on Android).
  */
-function getCoverBackground(colors: HexColor[]): HexColor {
+function getAverageColor(colors: HexColor[]): HexColor {
     const channels = [16, 8, 0].map((shift) => {
         const total = colors.reduce(
             (sum, color) =>
@@ -43,5 +43,5 @@ export {
     getDocumentTitle,
     getOutputFilename,
     getQuestionUrl,
-    getCoverBackground,
+    getAverageColor,
 };
