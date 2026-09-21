@@ -94,8 +94,11 @@ const edition011: Edition = {
                 </List>
                 <Paragraph>
                     Nothing is clear just yet, but I've found solace in pursuing
-                    the "3 virtues of engineering" -{' '}
-                    <Highlight>laziness, impatience, and pride</Highlight>. I
+                    the{' '}
+                    <Link href="https://thethreevirtues.com/">
+                        "3 virtues of engineering"
+                    </Link>{' '}
+                    - <Highlight>laziness, impatience, and pride</Highlight>. I
                     still want to solve meaningful problems. I want to be lazy
                     enough to make things easier for people, impatient enough to
                     want those solutions to be responsive to their problems, and
