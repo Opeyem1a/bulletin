@@ -28,7 +28,6 @@ interface FoundItemProps {
 }
 
 const FoundItem = ({ url, title, children }: FoundItemProps) => {
-    const domain = new URL(url).hostname.replace(/^www\./, '');
     return (
         <tr>
             <td style={{ padding: '12px 0' }}>
@@ -51,25 +50,9 @@ const FoundItem = ({ url, title, children }: FoundItemProps) => {
                             >
                                 <Link href={url}>{title}</Link>
                             </td>
-                            <td
-                                align="right"
-                                valign="top"
-                                className={textColorClass('muted')}
-                                style={{
-                                    paddingLeft: '12px',
-                                    fontFamily: FONT_STACK,
-                                    fontSize: '13px',
-                                    lineHeight: '24px',
-                                    color: COLORS.muted,
-                                    whiteSpace: 'nowrap',
-                                }}
-                            >
-                                {domain}
-                            </td>
                         </tr>
                         <tr>
                             <td
-                                colSpan={2}
                                 className={textColorClass('body')}
                                 style={{
                                     paddingTop: '4px',
