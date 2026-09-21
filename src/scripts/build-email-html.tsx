@@ -1,13 +1,12 @@
 import { mkdirSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
-import { formatEditionNumber, getOutputFilename } from '@/app/(config)/helpers';
+import { getOutputFilename } from '@/app/(config)/helpers';
 import { renderEmail } from '@/app/(config)/render-email';
 import {
     EDITIONS,
     getEdition,
     getLatestEdition,
 } from '@/app/(email-content)/editions';
-import { generateCover } from '@/utils/cover';
 
 (async function main() {
     // `yarn build:html 11` builds edition 11; with no number, the latest edition.
@@ -23,24 +22,15 @@ import { generateCover } from '@/utils/cover';
     const dirPath = resolve(process.cwd(), 'archive');
     mkdirSync(dirPath, { recursive: true });
 
-    // The HTML points at the cover as `cid:cover`, so the sending script attaches
-    // this file as an inline image named "cover".
-    const html = await renderEmail(edition, 'cid:cover');
+    const html = await renderEmail(edition);
     const htmlPath = resolve(
         dirPath,
         getOutputFilename({ editionNumber: edition.number })
     );
     writeFileSync(htmlPath, html, { encoding: 'utf-8' });
 
-    const coverPath = resolve(
-        dirPath,
-        `cover-${formatEditionNumber(edition.number)}.jpg`
-    );
-    writeFileSync(coverPath, generateCover(edition.cover));
-
     const kb = (Buffer.byteLength(html) / 1024).toFixed(1);
     console.log(`Email saved to ${htmlPath} (${kb} KB)`);
-    console.log(`Cover saved to ${coverPath}`);
     if (Buffer.byteLength(html) > 100 * 1024) {
         console.warn(
             'Warning: Gmail clips emails over ~102 KB with "[Message clipped]".'

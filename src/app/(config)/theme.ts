@@ -1,7 +1,8 @@
 import { HexColor } from '@/utils/types';
 
 /**
- * Every colour in the email lives here.
+ * Every colour in the email lives here. The palette is the homepage's (see
+ * signup.css): paper, cool ink, and coral for the marks only.
  *
  * Email clients only reliably keep inline styles, so elements use COLORS
  * inline. Dark mode can only be done from the <style> block, so an element also
@@ -10,50 +11,31 @@ import { HexColor } from '@/utils/types';
  */
 const COLORS = {
     page: '#EFECE7',
-    card: '#FFFFFF',
-    ink: '#1B1B1B',
-    body: '#3A3835',
-    muted: '#8E8A84',
-    line: '#EEEBE6',
-    coral: '#FF6160',
-    questionCard: '#F4F1ED',
-    questionCardBorder: '#ECE8E1',
-    chip: '#EAE6E0',
-    calloutBackground: '#FDF1DC',
-    calloutInk: '#6B4A12',
+    ink: '#141821',
+    body: '#373D4B',
+    muted: '#5A6070',
+    struck: '#767C8B',
+    coral: '#FF8787',
+    // The homepage's see-through coral highlight, mixed into the page colour
+    // up front, since Outlook drops alpha.
+    highlight: '#F7C6C3',
 } satisfies Record<string, HexColor>;
 
 type ColorToken = keyof typeof COLORS;
 
 /**
- * The dark counterpart of every token. Only Apple Mail uses these; Gmail's and
- * Outlook's apps apply their own dark mode.
+ * The dark counterpart of every token, matching the homepage's dark mode. Only
+ * Apple Mail uses these; Gmail's and Outlook's apps apply their own dark mode.
  */
 const DARK_COLORS: Record<ColorToken, HexColor> = {
-    page: '#0E0D0C',
-    card: '#161514',
-    ink: '#EDE9E4',
-    body: '#CFCAC3',
-    muted: '#9A938B',
-    line: '#2A2724',
-    coral: '#FF7A72',
-    questionCard: '#1C1A18',
-    questionCardBorder: '#2A2724',
-    chip: '#2A2724',
-    calloutBackground: '#33261A',
-    calloutInk: '#F6D9B0',
+    page: '#0C0C0D',
+    ink: '#FAFAFA',
+    body: '#D9D9D9',
+    muted: '#B5B5B5',
+    struck: '#A3A3A3',
+    coral: '#FF8787',
+    highlight: '#7A4344',
 };
-
-/**
- * Each kind of section keeps its colour across every edition. The colour is the
- * only marker; sections are never labelled. These read well on both the light
- * and dark card, so they have no dark counterpart.
- */
-const SECTION_COLORS = {
-    notes: '#F5A524',
-    'changed-mind': '#2FA66F',
-    found: '#3E8EDE',
-} satisfies Record<string, HexColor>;
 
 /**
  * Put these on any element that uses a token inline, so dark mode can find it:
@@ -75,6 +57,13 @@ const DARK_MODE_CSS = (Object.keys(DARK_COLORS) as ColorToken[])
     .join('\n');
 
 /**
+ * The highlighter covers the lower half of the words, like the homepage's,
+ * rather than the whole line.
+ */
+const highlightStroke = (color: HexColor) =>
+    `linear-gradient(transparent 50%, ${color} 50%)`;
+
+/**
  * Manrope loads in Apple Mail. Gmail and Outlook ignore web fonts and fall
  * through to the system font, which is close enough in shape.
  */
@@ -83,9 +72,9 @@ const FONT_STACK = `Manrope, -apple-system, BlinkMacSystemFont, 'Segoe UI', Robo
 export {
     COLORS,
     DARK_COLORS,
-    SECTION_COLORS,
     DARK_MODE_CSS,
     FONT_STACK,
+    highlightStroke,
     textColorClass,
     backgroundColorClass,
     borderColorClass,
