@@ -43,7 +43,7 @@ const Question = ({ id, text, children }: QuestionProps) => {
                     fontWeight: 500,
                 }}
             >
-                <Link href={getQuestionUrl(id)}>What's your answer?</Link>
+                <Link href={getQuestionUrl(id)}>What&apos;s your answer?</Link>
             </p>
         </>
     );
