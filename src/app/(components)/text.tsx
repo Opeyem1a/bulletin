@@ -130,4 +130,49 @@ const Aside = ({ children }: TextProps) => {
     );
 };
 
-export { Heading, Paragraph, Em, Link, Highlight, Struck, Aside };
+interface ListProps {
+    ordered?: boolean;
+    children: ReactNode;
+}
+
+/**
+ * Plain <ul>/<ol>, set like a Paragraph. Native lists hold up across email
+ * clients as long as margin and padding are set inline, since Outlook and
+ * Gmail each bring their own defaults.
+ */
+const List = ({ ordered = false, children }: ListProps) => {
+    const Tag = ordered ? 'ol' : 'ul';
+    return (
+        <Tag
+            className={textColorClass('body')}
+            style={{
+                margin: '6px 0 0',
+                paddingLeft: '24px',
+                fontFamily: FONT_STACK,
+                fontSize: '17px',
+                lineHeight: '28px',
+                fontWeight: 500,
+                letterSpacing: '-0.1px',
+                color: COLORS.body,
+            }}
+        >
+            {children}
+        </Tag>
+    );
+};
+
+const ListItem = ({ children }: TextProps) => {
+    return <li style={{ margin: '6px 0 0' }}>{children}</li>;
+};
+
+export {
+    Heading,
+    Paragraph,
+    Em,
+    Link,
+    Highlight,
+    Struck,
+    Aside,
+    List,
+    ListItem,
+};

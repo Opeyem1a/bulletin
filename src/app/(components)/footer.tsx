@@ -23,7 +23,8 @@ const Footer = ({ editionNumber }: FooterProps) => {
                         color: COLORS.ink,
                     }}
                 >
-                    Hit reply, I read <Highlight>every one</Highlight>.
+                    Hit reply, I read and reply to{' '}
+                    <Highlight>every single one</Highlight>.
                 </p>
                 <p
                     className={textColorClass('body')}
