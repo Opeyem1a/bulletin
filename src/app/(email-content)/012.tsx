@@ -54,16 +54,16 @@ const edition012: Edition = {
                     artists are scientists and the best scientists are artists.
                 </Paragraph>
                 <Paragraph>
-                    I'd propose that a similar relationship exists between beauty and
-                    utility. I think about how flowers spread their beauty
-                    through harmony with an ecosystem, feeding other life. Their
-                    utility is as much a part of their beauty as it is part of
-                    an exchange of value. Seeking beauty via utility and utility
-                    via beauty are both noble and worthwhile. It's keeping me
-                    sane at work to realize that while my job may be to produce
-                    a utility, that does not stop me from seeking beauty
-                    nonetheless. After all, creating an ecosystem where flowers
-                    flourish is an enticing goal all unto itself.
+                    I'd propose that a similar relationship exists between
+                    beauty and utility. I think about how flowers spread their
+                    beauty through harmony with an ecosystem, feeding other
+                    life. Their utility is as much a part of their beauty as it
+                    is part of an exchange of value. Seeking beauty via utility
+                    and utility via beauty are both noble and worthwhile. It's
+                    keeping me sane at work to realize that while my job may be
+                    to produce a utility, that does not stop me from seeking
+                    beauty nonetheless. After all, creating an ecosystem where
+                    flowers flourish is an enticing goal all unto itself.
                 </Paragraph>
             </Section>
             <Section>
@@ -126,12 +126,12 @@ const edition012: Edition = {
                         url="https://www.hyrumslaw.com/"
                         title="Hyrum's Law"
                     >
-                        This website succinctly explains one of
-                        my favourite concepts. Hyrum's Law is about software,
-                        but I find it applies to everything. Everything we do
-                        becomes a part of our contract with life, and things in
-                        our lives will quietly begin to depend on it. It reminds
-                        me to be mindful in work and friendship alike.
+                        This website succinctly explains one of my favourite
+                        concepts. Hyrum's Law is about software, but I find it
+                        applies to everything. Everything we do becomes a part
+                        of our contract with life, and things in our lives will
+                        quietly begin to depend on it. It reminds me to be
+                        mindful in work and friendship alike.
                     </FoundItem>
                     <FoundItem
                         url="https://ifeelsomuchsha.me/"
