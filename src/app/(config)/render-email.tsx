@@ -2,9 +2,7 @@ import { Masthead } from '@/app/(components)/masthead';
 import { Footer } from '@/app/(components)/footer';
 import {
     COLORS,
-    DARK_COLORS,
     FONT_STACK,
-    highlightStroke,
     backgroundColorClass,
     DARK_MODE_CSS,
 } from '@/app/(config)/theme';
@@ -36,7 +34,6 @@ const STYLES = `
   }
   @media (prefers-color-scheme: dark) {
 ${DARK_MODE_CSS}
-    .highlight { background-image:${highlightStroke(DARK_COLORS.highlight)} !important; }
   }
 `;
 
@@ -69,8 +66,7 @@ async function renderEmail(edition: Edition) {
     // with Word. The first hides the Manrope stylesheet from it (to every other
     // client that line is a plain <link>). The second forces Arial, because Outlook
     // falls back to Times New Roman when the first font in a stack isn't installed,
-    // underlines links, because it ignores their coral border, and gives
-    // highlights a flat colour, because it can't draw their gradient.
+    // and underlines links, because it ignores their coral border.
     // The last pair wraps the email in a fixed 600px table, since Outlook ignores
     // max-width.
     const html = `<!DOCTYPE html>
@@ -84,7 +80,7 @@ async function renderEmail(edition: Edition) {
         <meta name="supported-color-schemes" content="light dark">
         <title>${getDocumentTitle({ editionNumber: edition.number })}</title>
         <!--[if !mso]><!--><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&display=swap" rel="stylesheet"><!--<![endif]-->
-        <!--[if mso]><style>td, p, h2, a, span { font-family: Arial, sans-serif !important; } a.link { text-decoration: underline !important; } .highlight { background-color: ${COLORS.highlight} !important; }</style><![endif]-->
+        <!--[if mso]><style>td, p, h2, a, span { font-family: Arial, sans-serif !important; } a.link { text-decoration: underline !important; }</style><![endif]-->
         <style>${STYLES}</style>
     </head>
     <body class="${backgroundColorClass('page')}" style="margin:0;padding:0;background-color:${COLORS.page};">
