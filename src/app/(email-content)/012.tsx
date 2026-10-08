@@ -1,5 +1,12 @@
 import { Section } from '@/app/(components)/section';
-import { Aside, Em, Heading, Paragraph } from '@/app/(components)/text';
+import {
+    Aside,
+    Em,
+    Heading,
+    Highlight,
+    Paragraph,
+    Struck,
+} from '@/app/(components)/text';
 import { FoundItem, FoundList } from '@/app/(components)/found';
 import { Question } from '@/app/(components)/question';
 import { Edition } from '@/utils/types';
@@ -22,11 +29,11 @@ const edition012: Edition = {
                     For the unsolicited life update, I'm on a trip seeing my
                     lovely friends with some pontificating about life sprinkled
                     in. I couldn't ask for more. My other projects are on hold
-                    while I soul search. The coasts of Canada continue to call
-                    to me like sirens, if the sirens were most of my friends and
-                    cooler cities. Otherwise I'm doing alright, albeit
-                    exhausted. That concludes our update. Commencing the
-                    thinking now.
+                    while I <Struck>dilly dally</Struck> soul search. The coasts
+                    of Canada continue to call to me like sirens, if the sirens
+                    were most of my friends and cooler cities. Otherwise I'm
+                    doing alright, albeit exhausted. That concludes our update.
+                    Commencing the thinking now.
                 </Paragraph>
             </Section>
             <Section>
@@ -51,8 +58,11 @@ const edition012: Edition = {
                     My current belief is that practicing an art very seriously
                     requires acts of scientific invention, and pursuing a
                     science in its purest form requires dreaming of a vision and
-                    obsessing to bring your imagination to reality. The best
-                    artists are scientists and the best scientists are artists.
+                    obsessing to bring your imagination to reality.{' '}
+                    <Highlight>
+                        The best artists are scientists and the best scientists
+                        are artists.
+                    </Highlight>
                 </Paragraph>
                 <Paragraph>
                     I'd propose that a similar relationship exists between
@@ -99,9 +109,12 @@ const edition012: Edition = {
                     I don't do it, I deteriorate in a way I can't describe. Why
                     do some friends describe themselves as "musicians who work
                     in the service industry" and others as "software engineers
-                    who like hiking"? Perhaps we are all artists, practicing
-                    different arts. If so, then nurturing the arts we practice
-                    is our most crucial pursuit.
+                    who like hiking"?{' '}
+                    <Highlight>
+                        Perhaps we are all artists, practicing different arts.
+                    </Highlight>{' '}
+                    If so, then nurturing the arts we practice is our most
+                    crucial pursuit.
                 </Paragraph>
                 <Paragraph>
                     I'm drawn to this quote from <Em>Blue Eyed Samurai</Em>, my
