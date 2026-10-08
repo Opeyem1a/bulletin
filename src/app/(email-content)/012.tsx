@@ -1,6 +1,7 @@
 import { Section } from '@/app/(components)/section';
 import { Aside, Em, Heading, Paragraph } from '@/app/(components)/text';
 import { FoundItem, FoundList } from '@/app/(components)/found';
+import { Question } from '@/app/(components)/question';
 import { Edition } from '@/utils/types';
 
 const edition012: Edition = {
@@ -164,6 +165,18 @@ const edition012: Edition = {
                         leisure. I found this abstraction really interesting.
                     </FoundItem>
                 </FoundList>
+            </Section>
+            <Section>
+                <Question
+                    id={1141}
+                    text="Why do/don't you believe in love at first sight?"
+                >
+                    <Paragraph>
+                        I'm still chewing on my answer, but I'll add it to the
+                        website once I have something. Curious to hear what
+                        people think though!
+                    </Paragraph>
+                </Question>
             </Section>
         </>
     ),
