@@ -10,7 +10,9 @@ import { HexColor } from '@/utils/types';
  * DARK_MODE_CSS swaps in the DARK_COLORS value for that token.
  */
 const COLORS = {
-    page: '#EFECE7',
+    // Near white, so Gmail's forced dark mode inverts it to near black rather
+    // than the grey-brown the homepage's #EFECE7 became.
+    page: '#FBF9F6',
     ink: '#141821',
     body: '#373D4B',
     muted: '#5A6070',
@@ -18,7 +20,7 @@ const COLORS = {
     coral: '#FF8787',
     // The homepage's see-through coral highlight, mixed into the page colour
     // up front, since Outlook drops alpha.
-    highlight: '#F7C6C3',
+    highlight: '#FDCBCA',
 } satisfies Record<string, HexColor>;
 
 type ColorToken = keyof typeof COLORS;
