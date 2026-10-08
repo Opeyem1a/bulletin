@@ -57,13 +57,6 @@ const DARK_MODE_CSS = (Object.keys(DARK_COLORS) as ColorToken[])
     .join('\n');
 
 /**
- * The highlighter covers the lower half of the words, like the homepage's,
- * rather than the whole line.
- */
-const highlightStroke = (color: HexColor) =>
-    `linear-gradient(transparent 50%, ${color} 50%)`;
-
-/**
  * Manrope loads in Apple Mail. Gmail and Outlook ignore web fonts and fall
  * through to the system font, which is close enough in shape.
  */
@@ -74,7 +67,6 @@ export {
     DARK_COLORS,
     DARK_MODE_CSS,
     FONT_STACK,
-    highlightStroke,
     textColorClass,
     backgroundColorClass,
     borderColorClass,

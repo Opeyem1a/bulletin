@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import {
     COLORS,
     FONT_STACK,
-    highlightStroke,
+    backgroundColorClass,
     textColorClass,
 } from '@/app/(config)/theme';
 
@@ -83,16 +83,17 @@ const Link = ({ href, children }: LinkProps) => {
 };
 
 /**
- * The homepage's highlighter, for the phrase that matters most. It's a
- * gradient, so render-email.tsx swaps it for dark mode and gives Outlook on
- * Windows, which can't draw gradients, a flat highlight instead.
+ * The homepage's highlighter, for the phrase that matters most. A flat
+ * background colour rather than the homepage's half-height gradient: Gmail's
+ * apps darken background colours in dark mode but leave gradients alone, which
+ * left light text on a light highlight.
  */
 const Highlight = ({ children }: TextProps) => {
     return (
         <span
-            className="highlight"
+            className={backgroundColorClass('highlight')}
             style={{
-                backgroundImage: highlightStroke(COLORS.highlight),
+                backgroundColor: COLORS.highlight,
                 padding: '0 2px',
                 // Pad every line of a highlight that wraps, not just the ends.
                 WebkitBoxDecorationBreak: 'clone',
