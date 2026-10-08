@@ -18,13 +18,13 @@ const edition012: Edition = {
                     connections are beautiful.
                 </Paragraph>
                 <Paragraph>
-                    For the unsolicited life update, I am on a trip seeing my
+                    For the unsolicited life update, I'm on a trip seeing my
                     lovely friends with some pontificating about life sprinkled
                     in. I couldn't ask for more. My other projects are on hold
                     while I soul search. The coasts of Canada continue to call
                     to me like sirens, if the sirens were most of my friends and
                     cooler cities. Otherwise I'm doing alright, albeit
-                    exhausted. That concludes our update, commencing the
+                    exhausted. That concludes our update. Commencing the
                     thinking now.
                 </Paragraph>
             </Section>
@@ -54,7 +54,7 @@ const edition012: Edition = {
                     artists are scientists and the best scientists are artists.
                 </Paragraph>
                 <Paragraph>
-                    I'd propose that a relationship exists between beauty and
+                    I'd propose that a similar relationship exists between beauty and
                     utility. I think about how flowers spread their beauty
                     through harmony with an ecosystem, feeding other life. Their
                     utility is as much a part of their beauty as it is part of
@@ -126,7 +126,7 @@ const edition012: Edition = {
                         url="https://www.hyrumslaw.com/"
                         title="Hyrum's Law"
                     >
-                        This is a website that just succinctly explains one of
+                        This website succinctly explains one of
                         my favourite concepts. Hyrum's Law is about software,
                         but I find it applies to everything. Everything we do
                         becomes a part of our contract with life, and things in
@@ -148,8 +148,8 @@ const edition012: Edition = {
                         admittedly don't use it much. What I find more
                         compelling is the story. It's uplifting to see a
                         business that just saw a problem, solved it with a team
-                        of founders that care, and doesn't have some large "take
-                        over the world" goal. This article is a reflection of
+                        of founders who care, and doesn't have some large "take
+                        over the world" goal. This article is a reflection on
                         Tally's growth by its CEO, and it's a great read for
                         tired tech workers. There is hope.
                     </FoundItem>
