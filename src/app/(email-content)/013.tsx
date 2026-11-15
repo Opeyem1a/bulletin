@@ -55,7 +55,15 @@ const edition013: Edition = {
             <Section>
                 <Heading>Hey, these were interesting</Heading>
                 <FoundList>
-                    <FoundItem url="https://example.com" title="TODO">
+                    {/* Sasidharan's personal site: products, open-source apps, experiments. */}
+                    <FoundItem url="https://sasi.codes/" title="sasi.codes">
+                        TODO
+                    </FoundItem>
+                    {/* Anish Gupta's portfolio: products, AI tools, WebGL/3D experiments. */}
+                    <FoundItem
+                        url="https://www.anishfn.ink/"
+                        title="anishfn.ink"
+                    >
                         TODO
                     </FoundItem>
                 </FoundList>
