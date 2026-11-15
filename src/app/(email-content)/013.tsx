@@ -69,8 +69,10 @@ const edition013: Edition = {
                 </FoundList>
             </Section>
             <Section>
-                {/* TODO: real WDYT question id and text. */}
-                <Question id={0} text="TODO">
+                <Question
+                    id={1124}
+                    text="Which matters more, intention or outcome?"
+                >
                     <Paragraph>TODO</Paragraph>
                 </Question>
             </Section>
