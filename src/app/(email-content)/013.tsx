@@ -1,5 +1,7 @@
 import { Section } from '@/app/(components)/section';
 import { Heading, Paragraph } from '@/app/(components)/text';
+import { FoundItem, FoundList } from '@/app/(components)/found';
+import { Question } from '@/app/(components)/question';
 import { Edition } from '@/utils/types';
 
 const edition013: Edition = {
@@ -49,6 +51,20 @@ const edition013: Edition = {
                  */}
                 <Heading>Lost soul bias</Heading>
                 <Paragraph>TODO</Paragraph>
+            </Section>
+            <Section>
+                <Heading>Hey, these were interesting</Heading>
+                <FoundList>
+                    <FoundItem url="https://example.com" title="TODO">
+                        TODO
+                    </FoundItem>
+                </FoundList>
+            </Section>
+            <Section>
+                {/* TODO: real WDYT question id and text. */}
+                <Question id={0} text="TODO">
+                    <Paragraph>TODO</Paragraph>
+                </Question>
             </Section>
         </>
     ),
