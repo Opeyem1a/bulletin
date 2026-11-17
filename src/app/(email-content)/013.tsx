@@ -91,6 +91,13 @@ const edition013: Edition = {
                     >
                         TODO
                     </FoundItem>
+                    {/* Steph Ango (@kepano) on X. TODO: title from the post. */}
+                    <FoundItem
+                        url="https://x.com/kepano/status/1698388043278012621"
+                        title="TODO"
+                    >
+                        TODO
+                    </FoundItem>
                 </FoundList>
             </Section>
             <Section>
